@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YADA (Yet Another DevOps Article) | 4everinbeta Journal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../chat.js"></script>
+  </head>
+  <body class="page page--post">
+    <main>
+      <header class="nav">
+        <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
+          <img src="../logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
+          <span class="nav__name">Ryan Brown</span>
+        </a>
+        <div class="nav__links">
+          <a href="../index.html#impact">Impact</a>
+          <a href="../index.html#career">Career</a>
+          <a href="../index.html#focus">Focus Areas</a>
+          <a href="../index.html#contact">Connect</a>
+          <a href="../4everinbeta.html">Why 4everinbeta</a>
+          <a href="../blog.html">Journal</a>
+        </div>
+      </header>
+      <section class="hero">
+        <p class="hero__eyebrow">Oct 30, 2014</p>
+        <h1>YADA (Yet Another DevOps Article)</h1>
+        <p class="hero__intro">Originally published on <a href="https://4everinbeta.com/2014/10/30/yada-yet-another-devops-article/" target="_blank" rel="noopener">4everinbeta.com</a>.</p>
+      </section>
+      <article class="surface post">
+        <div class="post-content">
+<p><a href="https://4everinbeta.com/wp-content/uploads/2014/10/yada-yada-yada-seinfeld-elaine-benes.jpg"><img loading="lazy" data-attachment-id="84" data-permalink="https://4everinbeta.com/2014/10/30/yada-yet-another-devops-article/yada-yada-yada-seinfeld-elaine-benes/#main" data-orig-file="https://4everinbeta.com/wp-content/uploads/2014/10/yada-yada-yada-seinfeld-elaine-benes.jpg" data-orig-size="250,194" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="yada-yada-yada-seinfeld-elaine-benes" data-image-description="" data-image-caption="" data-medium-file="https://4everinbeta.com/wp-content/uploads/2014/10/yada-yada-yada-seinfeld-elaine-benes.jpg?w=250" data-large-file="https://4everinbeta.com/wp-content/uploads/2014/10/yada-yada-yada-seinfeld-elaine-benes.jpg?w=250" class="alignnone size-full wp-image-84" src="https://4everinbeta.com/wp-content/uploads/2014/10/yada-yada-yada-seinfeld-elaine-benes.jpg?w=1008" alt="yada-yada-yada-seinfeld-elaine-benes"   srcset="https://4everinbeta.com/wp-content/uploads/2014/10/yada-yada-yada-seinfeld-elaine-benes.jpg 250w, https://4everinbeta.com/wp-content/uploads/2014/10/yada-yada-yada-seinfeld-elaine-benes.jpg?w=150&amp;h=116 150w" sizes="(max-width: 250px) 100vw, 250px" /></a> Yet another article about DevOps? When will it ever end? Well, I can say from experience, we are very far from a consensus on what it means. So, it will probably not end anytime soon. Much of that has to do with the fact that it is different for every company. Each company needs to determine it’s own definition. But, in order to reach that definition, you must have a framework to work from. When it works and works well, everybody is happy. When it doesn’t work, it can be very ugly. So, here is my attempt at some guidance as I see it from the trenches. Having been through several permutations of DevOps or DevOps-like migrations, I can just tell you what I have seen work and what hasn’t.</p>
+<p><b>My Basic Tenets of DevOps</b></p>
+<p>DevOps, or whatever you want to call it, is fundamentally a shift toward unifying the process of creating software across business units. To achieve this unification you must, absolutely MUST, have buy-in by all. There is no “throwing over the wall” in DevOps. From the time an idea begins to germinate, there should be representation from all parties. This is the place that my vision differs from many. I believe that more than just development and operations should be involved. I don’t see a world where some representative from product comes-up with an idea and hands it off to development and says “build-it” working in the new world of rapidly changing enduser expectations. I believe there needs to be a constant feedback loop. This is because, in the end, we are all the product owners. And must be aware of what is being delivered and what is being experienced by those that are interacting with what is being delivered.</p>
+<p>Don’t get me wrong, I don’t believe the “everybody contributes equally to each part of the process” vision works. Especially once you start bringing-in non-technical representatives. The following are some basic tenets that I believe should be present on any team that wishes to carry-out this vision:</p>
+<ul>
+<li>Product (or whomever is responsible for the curating of products in your organization) should be in close contact with development, architecture and operations from inception to…</li>
+<li>Every member of the team should be empowered to say they see something going astray or they have concerns about some decision without any fear of shame or repercussions.</li>
+<li>The technical members of the team should be capable of doing all critical pieces of the process. This is to facilitate an active self-support model. Not every member needs to know every aspect in depth. Just enough to diagnose a problem. They should then be empowered to take actions on that identified problem. Be it write a patch, test and deploy it. Or just raise it to someone on the team with more in-depth domain knowledge.</li>
+<li>The team should be empowered to deploy their product to all environments. this needs further details as it is a touchy subject that must be evaluated on a case-by-case basis. But the fundamental concept must exist.</li>
+</ul>
+<div><strong>DevOps For Managers</strong></div>
+<div><b> </b></div>
+<div>I want to spend a little time on this subject. this can be a real hang-up to the adoption of DevOps in many organizations. But, I honestly believe that with the proper process and measures taken in advance, there should be no fear in giving a team the “keys to the kingdom” so to speak.</div>
+<div></div>
+<div>So, I do not advocate for most companies (many online start-ups may be exceptions to the rule) that you just allow all developers to check-in code and deploy it directly to production. You often hear developers and the like espousing “Continuous Deployment” and citing “Well, this is how Facebook does it”. [<a href="https://www.facebook.com/publications/514128035341603">See their paper here</a>] But, first I should say that because Facebook does this it doesn’t make it right for you. In fact, it makes it right for very few companies other than Facebook. Secondly, this is how Facebook deploys it’s front-end. Not the API that their front-end is built upon and that so many others have become dependent on being up. IF a user notices a glitch in the FB UI, they are not likely to squawk too loudly. If a large consumer of the FB auth API suddenly cannot authenticate their users, that will be noticed and may even make the news.</div>
+<div><b> </b></div>
+<div>What I do, however, advocate, is empowering teams to do their own deployments. Don’t make this a silted process. This leads to a feeling of responsibility to “own your code”. Developers are much more likely to deliver quality code if they know they are going to be the ones deploying it and, ultimately accountable for any issues it may have. Empower your teams. Treat them like responsible adults that can make sound decisions about the fitness of a product for general release. While there may be some pitfalls along the way, I guarantee you they will return the favor by making you look very good.</div>
+<div><b> </b></div>
+<div><strong>DevOps For Team Members</strong> (The Flip Side)</div>
+<div><b> </b></div>
+<div>So, up to now, I have been speaking generally. Or maybe more specifically to managers or team leaders. Now I want to speak to the teams directly. The implementers of the product. If you want the level of empowerment that DevOps requires, you had better care about what you put out there. There is no half-assing here. If you screw-up, there is no place to point the finger but right back at you. Here is some advice from the trenches to help you achieve that end-goal. Nothing too new. But way too often overlooked or brushed-aside.</div>
+<div></div>
+<ul>
+<li>Test Driven Development is your friend! Embrace it! Learn to love it! I, of all people, know full-well how hard this can be. And, to be completely honest, I still struggle with it to this day. But, I have developed my own rhythm for achieving TDD. It doesn’t fit anybody’s strict definition. But it works for me. Find what works for you. Just make sure you feel confident in them and their ability to flush-out issues.</li>
+<li>Automate everything you can! Obviously, the tests mentioned above should be run on each check-in. If you broke it, fix it. Don’t ever go home with a broken build. (I know, all the mantras you’ve been hearing for years. But they’ve all become mantras for good reason.) But, go beyond this. Automate your deployments as well. Use tools like fabric, puppet, chef where available. Even better, look into containerizing your apps with a tool like docker. If you get to the point where you can deploy exactly the same code (or even better, the same container!) over-and-over, you will become more confident in your abilities to deploy to any environment any time. Make sure you also automate the rollback of these deployments. If something goes wrong you will be so grateful to have a quick and easy way to get back to the previous known good state. Also, until you are completely comfortable with your automation, practice in a development environment. I would expect, through the normal process of develop-&gt;test-&gt;develop you will get comfortable. this will also be a work in progress. But you will eventually get to a point where you feel comfortable. Comfortable enough to even deploy continuously. Or, more likely, much more frequently than you do now.</li>
+</ul>
+<div>If you take the above steps. You will, with time, get to the point where the leaders in this arena are. And don&#8217;t wait for your organization to tell you to. Start now! there is no reason you can&#8217;t put everything in place. Get comfortable with it. Then present it to management. You can be the hero. Or, at the very least, you have prepared yourself to work at an organization that &#8220;gets it&#8221;.</div>
+<div><b> </b></div>
+<div><b>A Benefit To All</b></div>
+<div><b> </b></div>
+<div>The end result of all of this is that we will all benefit from this. Features, fixes and changes will get to production and in-front of clients sooner. this leads to a more immediate feedback loop that results in more changes that ultimately end in a better product.</div>
+        </div>
+        <div class="post-footer">
+          <a class="text-link text-link--back" href="../blog.html">Back to all entries</a>
+        </div>
+      </article>
+    </main>
+    <footer>
+      <div class="footer-links">
+        <span>Castle Pines, CO</span>
+        <span>·</span>
+        <a href="../4everinbeta.html">Origin story</a>
+        <span>·</span>
+        <a href="../blog.html">Journal</a>
+        <span>·</span>
+        <a href="mailto:ryankbrown@gmail.com">ryankbrown@gmail.com</a>
+      </div>
+    </footer>
+  </body>
+</html>

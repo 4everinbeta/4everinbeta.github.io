@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Push the boundaries! Responsibly. | 4everinbeta Journal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../chat.js"></script>
+  </head>
+  <body class="page page--post">
+    <main>
+      <header class="nav">
+        <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
+          <img src="../logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
+          <span class="nav__name">Ryan Brown</span>
+        </a>
+        <div class="nav__links">
+          <a href="../index.html#impact">Impact</a>
+          <a href="../index.html#career">Career</a>
+          <a href="../index.html#focus">Focus Areas</a>
+          <a href="../index.html#contact">Connect</a>
+          <a href="../4everinbeta.html">Why 4everinbeta</a>
+          <a href="../blog.html">Journal</a>
+        </div>
+      </header>
+      <section class="hero">
+        <p class="hero__eyebrow">Dec 09, 2014</p>
+        <h1>Push the boundaries! Responsibly.</h1>
+        <p class="hero__intro">Originally published on <a href="https://4everinbeta.com/2014/12/09/push-the-boundaries-responsibly/" target="_blank" rel="noopener">4everinbeta.com</a>.</p>
+      </section>
+      <article class="surface post">
+        <div class="post-content">
+<p>Recently, I had a colleague of mine say that they had taken “I took a lower overall pay scale to come to &lt;my company&gt; simply because I wanted to be part of something that matters.” This was very refreshing to hear as my company is going through a phase of great attrition due to many factors, not the least of which is a tight-fisted lock on what can be developed and deployed. Many people have become disillusioned with executive leadership decisions because they appear to be blocking progress to delivering real value to ensure stability.</p>
+<p>This has been sad to see as I joined my current company for the exact same reason and with the exact same sacrifice in compensation in order to make change that I believe this company is fantastically positioned to affect. Many of the individuals that have been the most influential in making real, substantive, progress toward our end-goal, have left for other opportunities over the past 6-12 months as a result. Most, to other companies in the same or related industries that they believe have a clear, concise vision and the will and motivation to take risks in order to push forward.</p>
+<p><b>Where Do I Stand?</b></p>
+<p>My feeling, while it may seem like a cheat, is somewhere on the fence. I do believe you must have stability first in order to make clients confident in your product. Confidence drives adoption and adoption can drive the change that you are looking to create. However, in order to succeed in making change, you must stretch the boundaries of the known and take risks. This is the only true path to innovation. It’s impossible to innovate while staying in your comfort zone. In my experience, true innovation happens when you have one foot in the known and the other in the unknown.</p>
+<p><b>Stability and Innovation Do Not Need to Be Mutually Exclusive</b></p>
+<p>So, how can you push your boundaries while also maintaining a stable product that customers will want to use and recommend? Well, current technologies have never made this more possible than it is today. The availability of cloud infrastructures alone, have had a tremendous impact on this.</p>
+<p>Continuous Delivery</p>
+<p>This is a pretty controversial subject these days and I believe that is because too many people are concentrating on the  wrong parts of the practice and/or conflating it with Continuous Deployment. Continuous Delivery is, in fact, about reducing risk. The following are the central tenets. If followed properly, you can deliver software changes and bug fixes more quickly and reliably than you would with traditional processes.</p>
+<ol>
+<li>Test Driven &#8211; All development should be done with a given, pre-determined outcome. You cannot move-on until the tests pass. AND YOU DON’T FIX THE TEST! All too often if a test is not passing a developer will change the test to match the behavior of the code. This should not happen if your test expectations are well understood ahead of time. (Which they should be.)</li>
+<li>Automated the build &#8211; Every single check-in to source control should trigger a build of the entire systems’ code. If the build does not succeed, further commits should be blocked until the breaking commit is fixed or reverted. And I am a believer in the old adage “If you break the build, you don’t go home until it is resolved.&#8221;</li>
+<li>Automated testing &#8211; In addition, each check-in to should result in a full suite of tests (preferably integration tests) being triggered to guarantee that no changes have been made that effect other parts of the system.</li>
+<li>Automated acceptance testing &#8211; Once a feature or bug fix is ready for deployment, you can automate the acceptance testing to verify that all pre-determined acceptance criteria has been met.</li>
+<li>Automated deployments &#8211; There are a number of options to automate deployments such as puppet, chef, fabric, etc. With any of these options it is easy to deploy, verify the deployment, rollback if necessary. This greatly reduces risk in deployments. Particularly when coupled with options such as A/B deploys.</li>
+</ol>
+<div>With the above pieces in-place, it opens the door to so many options that will reduce the friction of getting code to production while ensuring greater overall stability. Without the above pieces, I do not recommend trying to go further.</div>
+<div></div>
+<div>Another point that I made earlier is that people often conflate Continuous Deployment with Continuous Delivery. While very similar and holding many of the same tenets. There are some significant differences that make them fairly unique and, in my mind at least, makes Continuous Deployment only an option for a few organizations such as the <a href="http://www.infoq.com/presentations/Facebook-Release-Process">UX group at Facebook</a>. The key difference between the two in my mind is that Continuous Delivery focuses on the fact that all code must be deployable at any time. The steps outlined above can help you achieve that. Continuous Deployment, on the other hand, means that every change goes through the entire pipeline and is immediately deployed to production. (See Martin Fowler’s excellent write-up <a href="http://martinfowler.com/bliki/ContinuousDelivery.html">here</a>.)</div>
+<div></div>
+<div>While Continuous Delivery is not about constantly pushing code changes, it is important to keep your deployments fairly frequent to keep the scope of the changes being deployed small. This is remarkably effective in isolating issues when they do occur. If you wait too long to deploy, you end up with, essentially, a lot of small changes. Then, if an issue arises, you need to decompose the release to attempt to find the problem. If you release one small change at a time, you can clearly see if an issue arises and track it back.</div>
+<div></div>
+<p></br></p>
+<div><a href="http://martinfowler.com/books/continuousDelivery.html">Highly recommended read on this subject.</a></div>
+<div></div>
+<p></br></p>
+<div>Continuous Delivery processes open-up the floodgates to all sorts of possibilities that will facilitate innovation alongside stability.</div>
+<div></div>
+<p></br><br />
+A/B Deploys</p>
+<p>Today you can deploy changes to a whole new instance, side-by-side with an existing, stable, instance and run a comprehensive suite of tests against this instance. If it proves to be stable, you can then switch off your existing instance and direct traffic to the new instance. If you keep the initial instance available the cutover on the occasion of a failure is quick and can even be automated itself.</p>
+<p>Canary Deploys</p>
+<p>You can also take this a step further. If you choose to, you can selectively drive live, production traffic to the new instance while the majority of your traffic is still going to the main stable instance.</p>
+<p><a href="http://www.infoq.com/presentations/etsy-deploy">Interesting video on the above subject from etsy</a>.</p>
+<p><b>What Can Be Done By Us In The Trenches?</b></p>
+<p>If you happen to be one of the many that are stuck in the trenches feeling powerless to affect change in your organization, have faith. In most cases you can still take the steps necessary to prepare for Continuous Delivery. Put in-place all of the pieces and use them while still being required to follow traditional release processes. If you do so, and meticulously track your successes, you can build your argument to management. Nothing speaks better than data. If you can present irrefutable proof that your process works, consistently. Results in fewer bugs. Makes releases quicker and rollbacks less frequent. It will “get through”. And this will build trust which leads management to allow you to take more risks with the knowledge that you have diligently created processes and checkpoints (automated in most cases to reduce friction) that greatly reduce or even eliminate client impact. Small wins lead to great achievements.</p>
+<p><b>In Summary</b></p>
+<p>I do what I do because I truly believe that technology can, and will, make the world a better place. Technologist wield great power. Probably mores today than ever in history. However, there is great responsibility that comes along with that power. So, when somebody asks to take large risks in order to make innovation happen, they must be willing and able to back those requests up with, not only why you think this innovation is warranted (many people want to innovate just for innovations sake) but also, your game plan for taking it to market in a responsible manner.</p>
+<p>Looking at the current culture in my organization, I see that a change needs to occur to stop the hemorrhaging of talent. Not-coincidentally, we are losing most of our top talent to companies that are much smaller, mostly start-ups. Smaller companies, in many ways, have much more leeway to fail and recover than large organizations. But the key for large organizations is to realize they can do the same. Just focus on allowing small failures. Learning from them. And moving forward. If we don’t allow this to happen we will not only keep losing top talent, we will fail in our honorable mission. Which will really be a loss for everybody involved.</p>
+        </div>
+        <div class="post-footer">
+          <a class="text-link text-link--back" href="../blog.html">Back to all entries</a>
+        </div>
+      </article>
+    </main>
+    <footer>
+      <div class="footer-links">
+        <span>Castle Pines, CO</span>
+        <span>·</span>
+        <a href="../4everinbeta.html">Origin story</a>
+        <span>·</span>
+        <a href="../blog.html">Journal</a>
+        <span>·</span>
+        <a href="mailto:ryankbrown@gmail.com">ryankbrown@gmail.com</a>
+      </div>
+    </footer>
+  </body>
+</html>

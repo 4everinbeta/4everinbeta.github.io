@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Is Reactive Programming more than just hype? | 4everinbeta Journal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../chat.js"></script>
+  </head>
+  <body class="page page--post">
+    <main>
+      <header class="nav">
+        <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
+          <img src="../logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
+          <span class="nav__name">Ryan Brown</span>
+        </a>
+        <div class="nav__links">
+          <a href="../index.html#impact">Impact</a>
+          <a href="../index.html#career">Career</a>
+          <a href="../index.html#focus">Focus Areas</a>
+          <a href="../index.html#contact">Connect</a>
+          <a href="../4everinbeta.html">Why 4everinbeta</a>
+          <a href="../blog.html">Journal</a>
+        </div>
+      </header>
+      <section class="hero">
+        <p class="hero__eyebrow">Jan 15, 2015</p>
+        <h1>Is Reactive Programming more than just hype?</h1>
+        <p class="hero__intro">Originally published on <a href="https://4everinbeta.com/2015/01/15/is-reactive-programming-more-than-just-hype/" target="_blank" rel="noopener">4everinbeta.com</a>.</p>
+      </section>
+      <article class="surface post">
+        <div class="post-content">
+<p>In short? Yes. Class over. Thanks for coming…</p>
+<p>No? Ok, I suppose maybe I should explain why I feel this way. In this brief article I will attempt to explain reactive programming from a high level, ivory tower, standpoint. I’m not planning on getting into implementation details. there are many, many ways to go about it and I would not begin to presume I understand all of my readers requirements are. But I hope that by the end of this you will at least be curious enough to follow my resource links to learn more and maybe even do your own research to see how you might apply these principles in your own environment.</p>
+<p><b>What is reactive programming?</b></p>
+<p>Reactive programming (RP) is a set of programming patterns and techniques that were designed to handle the new landscape of computing. Some examples of what I mean by &#8220;new landscape&#8221;:</p>
+<p>Changing requirements (Chart courtesy of <a href="https://www.youtube.com/watch?v=7D9QfMj_KwI">Martin Odersky</a>)</p>
+<table>
+<tbody>
+<tr>
+<td><b>Requirement</b></td>
+<td><b>~10 years ago</b></td>
+<td><b>Today (2014/2015)</b></td>
+</tr>
+<tr>
+<td>Server nodes</td>
+<td>10’s</td>
+<td>1000’s</td>
+</tr>
+<tr>
+<td>Response times</td>
+<td>seconds</td>
+<td>milliseconds</td>
+</tr>
+<tr>
+<td>Acceptable downtime</td>
+<td>hours</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Data volume</td>
+<td>GBs</td>
+<td>TBs -&gt; PBs</td>
+</tr>
+</tbody>
+</table>
+<p>These new requirements are not simply incremental changes. They represent a complete paradigm shift. To me, the key points here are “Response times” and “Acceptable downtime”. These drive everything else. The increase in data is a direct response to customers wanting better experiences. However, it is also due to much-more finegrained monitoring and statistics. Regardless, the above is a reality. And, if you aren’t dealing with this now, it is guaranteed you will be.</p>
+<p>The new architectures that began to evolve from these new requirements needed to have the following characteristics:</p>
+<ul>
+<li>Event -driven &#8211; produce, propagate, consume and react to messages.</li>
+<li>Scalable &#8211; The ability to react to changing amount of load. Preferably without downtime.</li>
+<li>Resilient &#8211; Can react to failures without impacting client experience.</li>
+<li>Responsive &#8211; Will react to users promptly. (a.k.a. no progress bars!)</li>
+</ul>
+<p>All of these characteristics must be addressed to present a truly reactive architecture. In reality, I believe that most implementations will represent a subset of the above. However, these subsets, while functionally achieving the end-goal of RP, would not be RP Certified (if such a thing really existed.) Whether this matter to you is along the same lines as the debates amongst REST practitioners. I’m not going to step into that ring.</p>
+<p><b>Event-Driven Architecture</b></p>
+<p>One common approach to meeting these requirements is an event-driven architecture (EDA). If you are not familiar with the concept, I suggest checking-out one of the resource links at the bottom. However, in short, EDA is an architecture where the system is designed to react to events sent from other parts of the system, asynchronously and without blocking. An event, strictly speaking, is a notification that some state has changed in some part of the system. For example, if you are creating a system for a library and someone decides to check-out a book, an event will be ‘raised’ that any part of the system may choose to consume. In this scenario, one system that would absolutely be interested would be the one responsible for keeping-track of the libraries inventory. When it receives the checked-out event, it will change the inventory to reflect that the book is no longer available to be borrowed. There would likely be many more systems interested in this event as well.</p>
+<p>By providing an event-driven architecture in this manner, you allow for a system comprised of highly-decoupled, composable parts. In practice, these parts are typically services, preferably lightweight with a single responsibility. (Often referred to as microservices these days.)</p>
+<p>So, how does this all fit into creating a “reactive” system that is scalable, resilient, and responsive? Well, let me address each of these individually.</p>
+<p><b>Scalable</b></p>
+<p>Event-driven architectures (EDAs) provide scalability via their highly-decoupled nature. By decomposing a system into well-defined pieces with clear process boundaries, you can scale a systems components independently of each other. So, for example, given the library example, you may find a bottleneck existing at the point the books are checked-out just prior to the final paper due dates at the local university. (Not that I would have ever been one of these students! <img src="https://s0.wp.com/wp-content/mu-plugins/wpcom-smileys/twemoji/2/72x72/1f609.png" alt="😉" class="wp-smiley" style="height: 1em; max-height: 1em;" /> ) In anticipation of this increase, you could allocate additional nodes that simply emit the checked-out messages. (I realize that you may, in-turn, need to scale-out the consumers of the check-out message.)</p>
+<p>Because of the level of decoupling that EDA provides, the location of producers or consumers of events is completely irrelevant. This allows for additional scale-out opportunities such as cross-dc (for self-hosted solutions) or cross-az/region (for cloud-hosted solutions) scaling. This leads to many different options that reinforce, not only scalability, but resiliency and responsiveness as well. We will discuss these independently.</p>
+<p><b>Resilient</b></p>
+<p>The scalability options described above provide a significant start on the path to resiliency. By being able to scale-out in this manner you are making your system more resilient to individual node failures, network failures and even the rare az/region outage.</p>
+<p>However, the resiliency of an FP architecture, when designed properly, goes well beyond this. One foundational aspect is to build-in the ability to supervise processes, detect their failure and restart them. In order to do this properly, you need to understand <a href="http://doc.akka.io/docs/akka/snapshot/java/untyped-actors.html">the actor model</a> and <a href="http://doc.akka.io/docs/akka/snapshot/general/supervision.html">supervision trees</a>.</p>
+<p><a href="https://4everinbeta.com/wp-content/uploads/2015/01/supervisiontree.png"><img loading="lazy" data-attachment-id="126" data-permalink="https://4everinbeta.com/2015/01/15/is-reactive-programming-more-than-just-hype/supervisiontree/#main" data-orig-file="https://4everinbeta.com/wp-content/uploads/2015/01/supervisiontree.png" data-orig-size="627,517" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="supervisiontree" data-image-description="" data-image-caption="" data-medium-file="https://4everinbeta.com/wp-content/uploads/2015/01/supervisiontree.png?w=300" data-large-file="https://4everinbeta.com/wp-content/uploads/2015/01/supervisiontree.png?w=627" class="alignnone size-medium wp-image-126" src="https://4everinbeta.com/wp-content/uploads/2015/01/supervisiontree.png?w=300&#038;h=247" alt="supervisiontree" width="300" height="247" srcset="https://4everinbeta.com/wp-content/uploads/2015/01/supervisiontree.png?w=300 300w, https://4everinbeta.com/wp-content/uploads/2015/01/supervisiontree.png?w=600 600w, https://4everinbeta.com/wp-content/uploads/2015/01/supervisiontree.png?w=150 150w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+<p>Courtesy Erlang Programming (Cesarini, Thompson 2009)</p>
+<p>Thinking in actors and supervisors will be a bit a mental shift for most engineers and architects familiar with traditional OO models. However, spending the time to comprehend them will pay-off in spades. they are incredibly valuable in building resilient and scalable systems. I won’t go into much detail on this subject. However, at a high level, supervision trees allow you to detect failures in workers and restart them if they fail or block unpredictably. In addition, actors facilitate concurrency by encapsulating small units of logic without any shared state (preferably).</p>
+<p>This model also has the advantage of allowing scaling and resiliency across service boundaries. Meaning that if one service goes down, the entire service will not. As an example, if twitter loses the system that makes suggestions for similar feeds, twitter will stay-up while that piece is repaired. From a client perspective this can make the difference between a pleasurable experience and one that makes you leave for good.</p>
+<p><b>Responsive</b></p>
+<p>Reactive systems are kept responsive by their inherently asynchronous nature. Rather than firing a request and waiting for a response for a server, you make a request (or many) and continue on your merry way. As responses are received you process them in-line and, if a UI is part of the mix, you update it accordingly. An example of this would be when you view a twitter feed and posts may not all show-up at once. In fact, they often do not appear in the order they were created due to the fact that twitter shards their tweets. This means that the tweets you are reading may be getting retrieved from databases distributed across the globe.</p>
+<p>By adding EDA into the mix, you have the ability to have state events occurring update a system dynamically. So, using the twitter example again, as a tweet is created by someone you follow, it will be propagated to the feed that you are viewing without you needing to request the page again.</p>
+<p>In addition, as mentioned previously, the ability to scale-out across regions promotes the ability to locate services in a geographically dispersed manner. By doing so, you can implement latency-based routing to route requests to the nearest available node.</p>
+<p><b>So… Why All the hubbub?</b></p>
+<p>Well, if you haven’t determined it thus far, RP is a natural reaction to the world of cloud computing. Cloud computing requires a brand new way fo thinking of systems architecture. While it obviously provides a wealth of opportunities that were never available prior to its existence, it also introduces an equal amount of new challenges. Reactive Programming architectures address many of those challenges in a new, elegant manner.</p>
+<p>RP is easiest to build into an architecture from the beginning. However, I can say from experience, it is not all that difficult to retroactively adapt an existing system to, at least functionally, fit into the reactive paradigm. Either way, RP is becoming a rage because these problems are real. It is a necessity for meeting customer expectations in the modern world of computing to solve these problems. If you are not currently thinking reactively or working toward solving these problems in some other way, you should be. RP is a good, quickly maturing, model to follow to that end.</p>
+<p><b>Resources</b></p>
+<p>Event-Driven Architecture</p>
+<p><a href="http://msdn.microsoft.com/en-us/library/dd129913.aspx">Using Events in Highly Distributed Architectures</a></p>
+<p><a style="font-size:18px;line-height:29.7px;" href="http://www.eaipatterns.com/docs/EDA.pdf">EAI Patterns (Greg Hohpe)</a></p>
+<p>Scalability</p>
+<p><a href="http://highscalability.com/blog/2014/3/17/intuitively-showing-how-to-scale-a-web-application-using-a-c.html">Nice (simple) Breakdown of to Scale</a></p>
+<p>Reactive Programming</p>
+<p><a href="http://conal.net/fran/tutorial.htm">The Seminal Work</a></p>
+<p><a href="http://www.reactivemanifesto.org/">Reactive Manifesto</a></p>
+<p><a href="https://www.youtube.com/watch?v=sTSQlYX5DU0">What Does Reactive Mean? (Erik Meijer)</a></p>
+<p>Implementing</p>
+<p><a href="https://www.coursera.org/course/reactive">Excellent Coursera Course (Scala based)</a></p>
+<p><a href="http://techblog.netflix.com/2013/02/rxjava-netflix-api.html">Reactive Programming in the Netflix API with RxJava</a></p>
+        </div>
+        <div class="post-footer">
+          <a class="text-link text-link--back" href="../blog.html">Back to all entries</a>
+        </div>
+      </article>
+    </main>
+    <footer>
+      <div class="footer-links">
+        <span>Castle Pines, CO</span>
+        <span>·</span>
+        <a href="../4everinbeta.html">Origin story</a>
+        <span>·</span>
+        <a href="../blog.html">Journal</a>
+        <span>·</span>
+        <a href="mailto:ryankbrown@gmail.com">ryankbrown@gmail.com</a>
+      </div>
+    </footer>
+  </body>
+</html>
