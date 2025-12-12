@@ -85,9 +85,8 @@ def build_list_page(posts: List[Dict[str, str]]):
         <p class=\"hero__eyebrow\">Journal</p>
         <h1>Snapshots from the 4everinbeta journey.</h1>
         <p class=\"hero__intro\">
-          Essays originally posted on 4everinbeta.com, now brought into this modern experience. They
-          span leadership lessons, DevOps experiments, and deeply personal reflections on technology
-          and life.
+          Essays exploring leadership lessons, DevOps experiments, and deeply personal reflections on
+          technology, career, and life in perpetual beta.
         </p>
       </section>
       <section class=\"section\">
