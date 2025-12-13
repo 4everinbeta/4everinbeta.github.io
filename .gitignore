@@ -1,0 +1,13 @@
+# Compiled RAG artifacts and secrets
+rag/*.json
+private/
+
+# PDF assets and large binaries (keep original copies locally)
+Ryan_Brown_Sep_25.pdf
+Profile.pdf
+Profile.pdf:Zone.Identifier
+Ryan_Brown_Sep_25.pdf:Zone.Identifier
+
+# OS-specific editor files
+.DS_Store
+Thumbs.db
