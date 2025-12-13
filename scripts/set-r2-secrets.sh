@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-KEY_FILE="private/R2.key"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+KEY_FILE="${REPO_ROOT}/private/R2.key"
 
 if [[ ! -f "$KEY_FILE" ]]; then
   echo "Missing $KEY_FILE" >&2
