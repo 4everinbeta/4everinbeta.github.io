@@ -7,12 +7,15 @@ on:
       - content/**
       - build_embeddings.py
       - requirements-rag.txt
+      - tests/**
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    env:
+      CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+      CF_R2_ACCESS_KEY: ${{ secrets.CF_R2_ACCESS_KEY }}
+      CF_R2_SECRET_KEY: ${{ secrets.CF_R2_SECRET_KEY }}
     steps:
       - uses: actions/checkout@v4
 
@@ -25,13 +28,27 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-rag.txt
 
-      - name: Generate embeddings
+      - name: Run unit tests
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          RAG_FAKE_EMBEDDINGS: "1"
+        run: python -m unittest discover -s tests
+
+      - name: Generate embeddings
         run: python build_embeddings.py
 
-      - name: Commit artifacts
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Upload RAG artifacts to Cloudflare R2
+        if: env.CF_ACCOUNT_ID != ''
+        uses: cloudflare/r2-upload-action@v1
         with:
-          commit_message: "chore: refresh RAG assets"
-          file_pattern: rag/*.json
+          account-id: ${{ env.CF_ACCOUNT_ID }}
+          access-key-id: ${{ env.CF_R2_ACCESS_KEY }}
+          secret-access-key: ${{ env.CF_R2_SECRET_KEY }}
+          bucket: rag-assets
+          source: rag/
+          destination: latest
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rag-assets
+          path: rag/*.json

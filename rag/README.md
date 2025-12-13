@@ -1,6 +1,6 @@
 # RAG Assets
 
-This directory stores the generated `documents.json` and `vectors.json` files your chat
-worker will read at runtime. Run `python build_embeddings.py` locally (with either a
-local embedding model or `OPENAI_API_KEY` set) or trigger the `Build RAG assets`
-workflow to refresh these files whenever the source content changes.
+This directory is only a placeholder for the generated `documents.json` and
+`vectors.json` files. They are created by `python build_embeddings.py` (locally or via
+the GitHub Action) and uploaded to Cloudflare R2, so they no longer live in the repo.
+Keeping this README ensures the folder exists so the script always has a write target.

@@ -1,7 +1,8 @@
+import hashlib
 import json
 import os
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 import numpy as np
 
@@ -12,6 +13,8 @@ CHUNK_SIZE = 600  # words
 CHUNK_OVERLAP = 120  # words
 LOCAL_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 OPENAI_MODEL = os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")
+FAKE_DIMENSION = 64
+FAKE_ENV_FLAG = "RAG_FAKE_EMBEDDINGS"
 
 
 def read_documents() -> List[Dict]:
@@ -78,6 +81,36 @@ def embed_with_local_model(texts: List[str]) -> np.ndarray:
     return model.encode(texts, convert_to_numpy=True)
 
 
+def embed_with_fake_vectors(texts: List[str]) -> np.ndarray:
+    vectors = []
+    for text in texts:
+        seed = int(hashlib.sha256(text.encode("utf-8")).hexdigest()[:16], 16)
+        rng = np.random.default_rng(seed)
+        vectors.append(rng.random(FAKE_DIMENSION))
+    return np.vstack(vectors) if vectors else np.zeros((0, FAKE_DIMENSION))
+
+
+def generate_embeddings(texts: List[str]) -> Tuple[str, np.ndarray]:
+    if not texts:
+        return LOCAL_MODEL_NAME, np.zeros((0, FAKE_DIMENSION))
+
+    if os.getenv(FAKE_ENV_FLAG) == "1":
+        return "debug-fake-embeddings", embed_with_fake_vectors(texts)
+
+    if os.getenv("OPENAI_API_KEY"):
+        return OPENAI_MODEL, embed_with_openai(texts)
+
+    try:
+        vectors = embed_with_local_model(texts)
+        return LOCAL_MODEL_NAME, vectors
+    except Exception as err:  # pragma: no cover - network / env failure
+        raise RuntimeError(
+            "Failed to load the local embedding model. "
+            "Ensure huggingface downloads are available or set "
+            f"{FAKE_ENV_FLAG}=1 for deterministic test embeddings."
+        ) from err
+
+
 def main():
     raw_docs = read_documents()
     if not raw_docs:
@@ -85,12 +118,7 @@ def main():
 
     entries = build_entries(raw_docs)
     texts = [entry["text"] for entry in entries]
-    if os.getenv("OPENAI_API_KEY"):
-        embeddings = embed_with_openai(texts)
-        model_name = OPENAI_MODEL
-    else:
-        embeddings = embed_with_local_model(texts)
-        model_name = LOCAL_MODEL_NAME
+    model_name, embeddings = generate_embeddings(texts)
 
     OUTPUT_DIR.mkdir(exist_ok=True)
     docs_path = OUTPUT_DIR / "documents.json"

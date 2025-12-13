@@ -1,32 +1,48 @@
 # 4everinbeta RAG pipeline
 
-This repo now includes a lightweight retrieval augmented generation loop:
+This repo now includes a lightweight retrieval-augmented generation loop that powers the
+chat concierge on **4everinbeta.me**.
 
-1. Source material lives in `content/` (resume, LinkedIn profile, Markdown essays).
-2. `build_embeddings.py` chunks those files and either:
-   - runs a local `sentence-transformers` model (if Hugging Face access is permitted), or
-   - calls OpenAI's `text-embedding-3-small` API when `OPENAI_API_KEY` is set.
-3. The script writes `rag/documents.json` and `rag/vectors.json`, which will be served statically.
-4. `.github/workflows/build-rag.yml` can be triggered manually (or via content changes) to regenerate the assets and commit the results automatically.
-5. `worker/chat-worker.js` (deploy via `wrangler publish`) fetches those JSON files, performs retrieval, and will soon call an LLM to craft answers.
-6. `chat.js` now looks for `window.BRAND_CHAT_ENDPOINT` so the UI can call the Worker once it is deployed; otherwise it falls back to the deterministic responses.
+1. Source content (resume, Profile PDF, essays) lives in `content/`.
+2. `build_embeddings.py` chunks each file and generates embeddings. When the `RAG_FAKE_EMBEDDINGS=1`
+   flag is set it produces deterministic dummy vectors (for unit tests and environments without
+   Hugging Face access); otherwise it uses `sentence-transformers/all-MiniLM-L6-v2`. You can still
+   set `OPENAI_API_KEY` if you prefer hosted embeddings, but the GitHub Action relies solely on the
+   local model to keep costs at zero.
+3. The GitHub Action (`.github/workflows/build-rag.yml`) installs dependencies, runs the unit tests,
+   executes the embedder, and uploads `rag/documents.json` + `rag/vectors.json` to Cloudflare R2.
+   They are served from a custom subdomain such as `https://rag.4everinbeta.me/latest/documents.json`.
+4. `worker/chat-worker.js` (deploy via `wrangler publish`) reads those JSON files, performs
+   retrieval, and will eventually call an LLM to craft answers. Its configuration lives in
+   `worker/wrangler.toml`.
+5. The in-page widget (`chat.js`) now checks for `window.BRAND_CHAT_ENDPOINT`. When defined, it POSTs
+   user questions to the Worker; otherwise it falls back to the curated knowledge array.
 
 ### Local usage
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements-rag.txt
-OPENAI_API_KEY=sk-... python build_embeddings.py
+RAG_FAKE_EMBEDDINGS=1 python build_embeddings.py  # quick fake run
+# or, with full embeddings (requires huggingface downloads)
+python build_embeddings.py
 ```
 
 ### Deployment steps
 
-1. Add `OPENAI_API_KEY` to the repo's GitHub Actions secrets.
-2. Run the `Build RAG assets` workflow from the Actions tab to generate the JSON files.
+1. Create an R2 bucket (e.g., `rag-assets`) and bind it to `rag.4everinbeta.me`. Store the bucket
+   credentials in the repository secrets `CF_ACCOUNT_ID`, `CF_R2_ACCESS_KEY`, and
+   `CF_R2_SECRET_KEY`.
+2. Trigger the **Build RAG assets** workflow. It will run the tests, generate the fresh JSON, upload
+   them to R2, and attach the output as a workflow artifact for debugging.
 3. Deploy the Worker:
+
    ```bash
    cd worker
-   npm install wrangler --global  # or use pnpm
+   npm install wrangler --global
    wrangler publish --name 4everinbeta-chat
    ```
-4. Set `window.BRAND_CHAT_ENDPOINT = "https://4everinbeta-chat.workers.dev"` in a small inline script or via Google Tag Manager until the endpoint stabilizes.
+
+4. In your HTML (e.g., `index.html`), set `window.BRAND_CHAT_ENDPOINT =
+   "https://4everinbeta-chat.workers.dev"` so the UI calls the Worker. A Cloudflare custom domain
+   works equally well if you prefer `chat.4everinbeta.me`.
