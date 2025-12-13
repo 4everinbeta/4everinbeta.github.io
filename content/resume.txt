@@ -1,0 +1,465 @@
+R B  
+
+Ryan Brown 
+
+Transformational Technology Executive | Cloud & Innovation 
+Strategist 
+
+Professional summary 
+
+Dynamic and results-driven technology executive with a proven track 
+
+record in enterprise architecture, cloud transformation, and data analytics. 
+
+Adept at leading large-scale digital initiatives, optimizing cloud 
+infrastructure, and pioneering automation excellence to enhance 
+
+efficiency, predictability, and agility. A relentless advocate for customer-
+
+centric innovation, leveraging data-driven feedback loops to align 
+
+technology with business goals. Skilled in orchestrating multi-year 
+
+roadmaps, driving multimillion-dollar efficiencies, and fostering high-
+
+performing, agile teams. Passionate about revenue growth through 
+
+scalable architectures, real-time data platforms, and cloud-native strategies 
+
+while ensuring enterprise security, resilience, and compliance (GDPR, PCI 
+
+ryankbrown@gmail.com 
+
+303.590.5402  
+
+  Castle Pines, CO 80108  
+
+  Profile 
+
+Websites, Portfolios, 
+Profiles 
+
+•  LinkedIn 
+
+DSS). A trusted advisor to executive leadership, shaping the future of 
+
+Skills 
+
+technology with a forward-thinking, customer-obsessed approach. 
+
+Innovative and strategic thinker with passion for leveraging technology to 
+
+drive business growth and efficiency. Possesses deep understanding of 
+
+software development and IT infrastructure, coupled with expertise in 
+
+•  Digital Transformation Leadership 
+
+•  Customer-Focused Innovation 
+
+project management and team leadership. Focused on delivering 
+
+•  Data-Informed Strategy Development 
+
+transformative technological solutions that enhance organizational 
+
+performance and competitiveness. 
+
+Work history 
+
+Pulte Financial Services - Vice President, Enterprise Architecture, Cloud 
+
+Solutions and Data Analytics  
+
+Centennial, Colorado  
+
+08/2021 - Current  
+
+•  Designed and executed a multi-year cloud modernization roadmap, 
+
+preparing all core mortgage applications for Azure adoption by 2025. 
+
+•  Founded and scaled Cloud, Data, AI, and DevSecOps Centers of 
+
+Excellence, embedding security-first principles, automation, and AI/ML 
+
+into enterprise delivery. 
+
+•  Integrated GenAI solutions into mortgage production workflows, 
+
+automating repetitive manual processes such as document review and 
+customer communications. Resulted in accelerated processing cycles, 
+
+•  Cybersecurity & Compliance 
+
+•  Team Leadership Excellence 
+
+•  Board-Level Consultation 
+
+•  Cloud Services Optimization 
+
+•  AI, Data & Analytics 
+
+•  Full Lifecycle Software Engineering 
+
+Leadership  
+
+•  Security & Risk Management 
+
+•  Enterprise Systems & Infrastructure 
+
+•  Big Data Technologies 
+
+•  Process Automation 
+
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+reduced errors, and improved operational efficiency. 
+
+•  Deployed real-time sentiment analysis in customer communication 
+dashboards, enhancing responsiveness and customer satisfaction. 
+
+•  Developed ML models to predict optimal mortgage incentive 
+
+conditions, increasing uptake while minimizing cost exposure. 
+
+•  Organizational Strategy  
+
+•  Coaching and mentoring  
+
+•  Strategic Decision-Making  
+
+•  Served as a founding member of the company’s AI governance 
+
+•  Results-driven  
+
+committee, guiding ethical adoption and risk management in AI 
+
+initiatives. 
+
+•  Acted as a trusted advisor to the C-suite and board, translating complex 
+
+technology strategies into actionable business outcomes. 
+
+Visa - Chief Architect – Cloud  
+
+Highlands Ranch, Colorado  
+
+07/2019 - 08/2021  
+
+•  Architected and executed Visa DPS’ enterprise cloud transformation 
+
+strategy. 
+
+•  Co-founded Visa's Cloud Center of Excellence, establishing technical 
+
+guardrails, DevOps best practices, and a long-term roadmap for cloud 
+
+adoption, accelerating secure and scalable infrastructure deployment. 
+
+•  Championed the Open-Source Software (OSS) initiative, aligning 
+
+technology innovation with business expansion 
+
+•  Directed enterprise-wide SaaS adoption, successfully migrating Visa's 
+
+customer service and sales operations to a single cloud-based platform, 
+
+Education 
+
+Regis University 
+
+Denver, CO 
+
+Computer Information Systems 
+
+Management 
+
+Certifications 
+
+Mortgage Bankers Association AI 
+
+Mortgage Professional | 
+
+PhoenixTeam/MBA 
+
+AI for Business Leaders | Maven 
+
+streamlining workflows and improving efficiency 
+
+Certified SAFe Agilist | Scaled Agile, Inc. 
+
+•  Collaborated with executive leadership to drive infrastructure 
+
+investment decisions, optimizing costs while ensuring business 
+
+objectives were met with scalable, high-performance technology 
+
+solutions 
+
+Lean Technology Strategy: Starting Your 
+
+Business Transformation | LinkedIn 
+
+Arrow Electronics - Chief Architect – Digital Transformation  
+
+Centennial, CO  
+
+12/2016 - 07/2019  
+
+•  Established and led the Digital Architecture & Cloud Centers of 
+
+Excellence, defining strategic direction and accelerating the enterprise 
+
+transition to cloud-native architectures 
+
+•  Directed the end-to-end re-platforming of Arrow Digital's $1 billion 
+
+eCommerce platform onto Azure Cloud, achieving a seamless migration 
+
+within a tight six-month timeline, enhancing scalability, agility, and 
+
+customer experiences 
+
+•  Led the enterprise-wide adoption of Scaled Agile practices, 
+
+transforming the engineering culture across 100+ engineers and 
+
+architects, improving collaboration and accelerating delivery velocity 
+
+•  Achieved full GDPR compliance in just three months, ensuring 
+
+adherence to stringent data protection regulations, safeguarding 
+
+customer trust, and mitigating regulatory risks 
+
+•  Architected and implemented a next-generation data platform 
+
+leveraging Kafka and Kafka Streams, enabling hyper-personalized 
+
+customer experiences for both client-facing applications and internal 
+
+  
+ 
+ 
+ 
+ERP systems, driving revenue growth from $500 million to $1.5 billion 
+
+•  Redesigned a decade-old B2B eCommerce solution, crafting modern, 
+
+scalable architecture that significantly improved performance, 
+
+reliability, and business agility, resulting in a 30% increase in annual 
+
+revenue 
+
+•  Successfully guided the migration of a $1 billion eCommerce platform 
+
+to Azure cloud, enhancing scalability and customer experiences 
+•  Achieved full GDPR compliance within three months, ensuring data 
+protection regulations were met and maintaining customer trust 
+
+Helix Education - Lead Software Architect  
+
+Denver, Colorado  
+
+09/2015 - 12/2016  
+
+•  Led a team of four software architects in designing and implementing a 
+distributed, event-driven architecture, leveraging Go, Kafka, Samza, 
+
+and PostgreSQL to enhance system scalability and resilience 
+
+•  Defined and modeled domain events and data flows, ensuring seamless 
+
+service API integration across enterprise systems, optimizing 
+
+interoperability and efficiency 
+
+•  Unified three previously disconnected products (acquired through 
+
+acquisitions) into a cohesive platform API, significantly streamlining 
+
+operations and improving system performance 
+
+•  Implemented automated deployment pipelines and engineering 
+
+standards, accelerating release cycles while reducing manual errors and 
+
+operational risks 
+
+•  Directed the development of a real-time stream processing platform, 
+empowering clients with behavior-based intelligence to enhance 
+
+decision-making capabilities 
+
+•  Optimized cloud-deployed applications and architectures, driving 
+
+improvements in system reliability, uptime, and operational efficiency 
+
+•  Led a four-person architecture team to successfully build a scalable, 
+
+event-driven system supporting mission-critical workloads 
+
+•  Successfully merged three disparate products into a unified platform 
+API, significantly streamlining operational workflows and improving 
+system integration 
+
+•  Improved the reliability and uptime of cloud-deployed applications by 
+
+optimizing existing architectures, leading to a more stable and 
+
+dependable service for clients 
+
+Pearson - Team Lead / Principal Software Engineer / Architect - R & D  
+
+Denver, Colorado  
+
+07/2009 - 09/2015  
+
+•  Led architecture and technical strategy as a founding member of the 
+
+Pearson API Best Practices Group, establishing API design guidelines 
+and driving horizontal scalability 
+
+•  Played a key role in Pearson's enterprise architectural oversight team, 
+
+defining data transfer strategies and best practices for a comprehensive 
+
+web-API suite with 200+ REST endpoints 
+
+•  Pioneered Pearson's cloud-based API strategy, developing client 
+
+libraries for web APIs and data messaging services, accelerating 
+
+adoption across engineering teams 
+
+•  Designed proof-of-concept applications to validate scalable 
+
+architectures, ensuring robust performance for high-volume data 
+
+integration systems supporting thousands of clients 
+
+•  Spearheaded process improvements by architecting an n-tier SOA 
+
+solution and REST API wrapping SOA services, significantly enhancing 
+
+performance, reliability, and scalability 
+
+•  Developed automation tools that empowered internal teams, including 
+
+a database comparison tool for production and development 
+
+environments, reducing debugging time 
+
+•  Designed and led the architecture for an enterprise messaging system, 
+orchestrating 30 million+ state-change messages daily across 700+ 
+
+producers and 2,000+ consumers 
+
+•  Designed and launched a comprehensive web-API suite, streamlining 
+
+internal and external data transfer and supporting 200+ REST endpoints 
+
+•  Architected and implemented an n-tier SOA solution and REST API, 
+significantly improving system performance, scalability, and service 
+
+integrations 
+
+•  Built and scaled an internal messaging system processing 30M+ daily 
+messages, ensuring seamless event-driven communication across the 
+
+enterprise 
+
+Selected Additional Experience 
+
+•  Senior Consultant, Analysts International, eBags, Inc. 
+•  Senior Engineer and Analyst, IntraNext Systems 
+•  Web Developer, SecureNet, LLC 
+
+Skills Highlights 
+
+Spearheaded the formation and leadership of the AI Center of Excellence 
+
+(CoE) at Pulte Financial Services, driving the adoption of cutting-edge AI 
+
+solutions and leading a cross-functional team to deliver innovative, data-
+
+driven products., Directed strategic innovation initiatives focused on 
+
+digital transformation and data analytics, aligning technology solutions 
+
+with evolving business needs and emerging industry trends., Championed 
+
+the integration of AI and machine learning into core business processes, 
+
+enhancing operational efficiency and enabling predictive insights for 
+
+better decision-making., Fostered a culture of innovation by implementing 
+
+a structured framework for ideation and rapid prototyping, accelerating 
+
+the development of transformative technology solutions., Developed 
+
+strategic partnerships with technology vendors and research institutions 
+
+to stay at the forefront of innovation and integrate emerging technologies 
+
+into enterprise solutions., Enterprise Architecture & Digital 
+
+Transformation – Driving scalable, cloud-native ecosystems and 
+
+technology roadmaps., Customer-Centric Innovation – Aligning 
+technology strategy with business goals through data-driven feedback 
+
+  
+loops., Agile & DevOps Leadership – Scaling agile frameworks and 
+
+embedding automation into all phases of development lifecycles., Data-
+
+Driven Decision Making – Leveraging AI/ML, analytics, and predictive 
+
+modeling for strategic insights., Cybersecurity & Compliance – 
+
+Implementing enterprise-wide security frameworks (GDPR, SOC 2, 
+
+NIST)., High-Performance Team Leadership – Building, mentoring, and 
+
+scaling elite technology teams., Executive & Board-Level Advisory – 
+
+Communicating complex technology strategies to C-suite and 
+
+stakeholders., Cloud Platforms – Azure, AWS, AliCloud, Hybrid/Multi-
+
+Cloud Strategy & Optimization., AI, Data & Analytics – Real-time data 
+
+platforms, AI/ML, predictive analytics, business intelligence., Software 
+
+Engineering & DevOps – CI/CD pipelines, Kubernetes, Terraform, 
+
+microservices architecture., Security & Risk Management – Zero Trust, 
+
+Identity & Access Management (IAM), Encryption, SIEM., Enterprise 
+
+Systems & Infrastructure – ERP, CRM, SaaS/PaaS/IaaS, API-led 
+
+integrations., Big Data & Streaming Technologies – Kafka, Spark, 
+
+SQL/NoSQL databases., Automation & Process Optimization – RPA, AI-
+
+driven automation, Infrastructure as Code (IaC). 
+
+. 
+Highlighted Achievements 
+- Cloud Transformation: Successfully scaled global payment processing platforms handling billions of transactions, 
+achieving industry-leading uptime and transaction latency performance. 
+- Cost Optimization: Achieved significant multi-million-dollar cloud infrastructure cost reductions (30% at Arrow, 
+multimillion-dollar savings at Pulte) through strategic vendor management and optimization. 
+- Compliance Leadership: Led rapid regulatory compliance transformations, achieving GDPR and PCI DSS compliance 
+under tight timelines, mitigating risk and safeguarding customer trust.

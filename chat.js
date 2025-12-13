@@ -98,6 +98,10 @@ class BrandChat {
   }
 
   reply(text) {
+    if (window.BRAND_CHAT_ENDPOINT) {
+      this.requestRemoteAnswer(text);
+      return;
+    }
     const best = this.findBestResponse(text);
     const response =
       best?.response || fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
@@ -105,6 +109,29 @@ class BrandChat {
     setTimeout(() => {
       this.addMessage("bot", response);
     }, 400);
+  }
+
+  async requestRemoteAnswer(text) {
+    const pending = document.createElement("div");
+    pending.className = "message message--bot";
+    pending.textContent = "Synthesizing a response…";
+    this.messages.appendChild(pending);
+    this.messages.scrollTop = this.messages.scrollHeight;
+    try {
+      const res = await fetch(window.BRAND_CHAT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text })
+      });
+      if (!res.ok) {
+        throw new Error(`API ${res.status}`);
+      }
+      const data = await res.json();
+      pending.textContent = data.answer || fallbackResponses[0];
+    } catch (error) {
+      console.error(error);
+      pending.textContent = "The concierge is warming up—try again shortly.";
+    }
   }
 
   findBestResponse(text) {

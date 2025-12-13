@@ -1,0 +1,37 @@
+name: Build RAG assets
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - content/**
+      - build_embeddings.py
+      - requirements-rag.txt
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-rag.txt
+
+      - name: Generate embeddings
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python build_embeddings.py
+
+      - name: Commit artifacts
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: refresh RAG assets"
+          file_pattern: rag/*.json

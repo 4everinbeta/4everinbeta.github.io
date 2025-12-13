@@ -1,0 +1,7 @@
+name = "foreverinbeta-chat"
+main = "chat-worker.js"
+compatibility_date = "2025-01-13"
+
+[vars]
+DOCUMENT_URL = "https://4everinbeta.me/rag/documents.json"
+VECTOR_URL = "https://4everinbeta.me/rag/vectors.json"
