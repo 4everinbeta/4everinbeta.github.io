@@ -12,6 +12,8 @@ fi
 
 declare -A secrets
 while IFS='=' read -r key value; do
+  key="${key//$'\r'/}"
+  value="${value//$'\r'/}"
   [[ -z "$key" ]] && continue
   secrets["$key"]="$value"
 done < "$KEY_FILE"
