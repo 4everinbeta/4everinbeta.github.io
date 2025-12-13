@@ -10,8 +10,9 @@ chat concierge on **4everinbeta.me**.
    set `OPENAI_API_KEY` if you prefer hosted embeddings, but the GitHub Action relies solely on the
    local model to keep costs at zero.
 3. The GitHub Action (`.github/workflows/build-rag.yml`) installs dependencies, runs the unit tests,
-   executes the embedder, and uploads `rag/documents.json` + `rag/vectors.json` to Cloudflare R2.
-   They are served from a custom subdomain such as `https://rag.4everinbeta.me/latest/documents.json`.
+   executes the embedder, and uploads `rag/documents.json` + `rag/vectors.json` to Cloudflare R2 via
+   the AWS CLI (`aws s3 sync ... --endpoint-url https://<account>.r2.cloudflarestorage.com`). They
+   are served from a custom subdomain such as `https://rag.4everinbeta.me/latest/documents.json`.
 4. `worker/chat-worker.js` (deploy via `wrangler publish`) reads those JSON files, performs
    retrieval, and will eventually call an LLM to craft answers. Its configuration lives in
    `worker/wrangler.toml`.
