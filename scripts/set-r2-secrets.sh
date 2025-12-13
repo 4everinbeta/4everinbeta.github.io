@@ -11,7 +11,7 @@ if [[ ! -f "$KEY_FILE" ]]; then
 fi
 
 declare -A secrets
-while IFS='=' read -r key value; do
+while IFS='=' read -r key value || [[ -n "$key" ]]; do
   key="${key//$'\r'/}"
   value="${value//$'\r'/}"
   [[ -z "$key" ]] && continue
