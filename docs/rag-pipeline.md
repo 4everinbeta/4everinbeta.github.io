@@ -6,16 +6,19 @@ chat concierge on **4everinbeta.me**.
 1. Source content (resume, Profile PDF, essays) lives in `content/`.
 2. `build_embeddings.py` chunks each file and generates embeddings. When the `RAG_FAKE_EMBEDDINGS=1`
    flag is set it produces deterministic dummy vectors (for unit tests and environments without
-   Hugging Face access); otherwise it uses `sentence-transformers/all-MiniLM-L6-v2`. You can still
+   Hugging Face access); otherwise it uses the same model Cloudflare ships in Workers AI,
+   `BAAI/bge-small-en-v1.5`, so offline data matches the hosted query model. You can still
    set `OPENAI_API_KEY` if you prefer hosted embeddings, but the GitHub Action relies solely on the
    local model to keep costs at zero.
 3. The GitHub Action (`.github/workflows/build-rag.yml`) installs dependencies, runs the unit tests,
    executes the embedder, and uploads `rag/documents.json` + `rag/vectors.json` to Cloudflare R2 via
    the AWS CLI (`aws s3 sync ... --endpoint-url https://<account>.r2.cloudflarestorage.com`). They
    are served from a custom subdomain such as `https://rag.4everinbeta.me/latest/documents.json`.
-4. `worker/chat-worker.js` (deploy via `wrangler publish`) reads those JSON files, performs
-   retrieval, and will eventually call an LLM to craft answers. Its configuration lives in
-   `worker/wrangler.toml`.
+4. `worker/chat-worker.js` (deploy via `wrangler publish`) now loads those JSON files,
+   vector-searches them, embeds questions through Workers AI (`@cf/baai/bge-small-en-v1.5`), and
+   drafts answers with the low-latency `@cf/meta/llama-3.2-3b-instruct` model. It also sends `Access-Control-Allow-Origin`
+   headers + an OPTIONS handler so the browser can call it from GitHub Pages. Its configuration lives
+   in `worker/wrangler.toml`, which also wires the `[ai]` binding.
 5. The in-page widget (`chat.js`) now checks for `window.BRAND_CHAT_ENDPOINT`. When defined, it POSTs
    user questions to the Worker; otherwise it falls back to the curated knowledge array.
 
@@ -27,6 +30,10 @@ pip install -r requirements-rag.txt
 RAG_FAKE_EMBEDDINGS=1 python build_embeddings.py  # quick fake run
 # or, with full embeddings (requires huggingface downloads)
 python build_embeddings.py
+
+# run both the Python + Worker unit tests
+python -m unittest discover -s tests
+node --test worker/rag-helpers.test.js
 ```
 
 ### Deployment steps
@@ -36,12 +43,12 @@ python build_embeddings.py
    `CF_R2_SECRET_KEY`.
 2. Trigger the **Build RAG assets** workflow. It will run the tests, generate the fresh JSON, upload
    them to R2, and attach the output as a workflow artifact for debugging.
-3. Deploy the Worker:
+3. Deploy the Worker (after running `wrangler login` once):
 
    ```bash
    cd worker
    npm install wrangler --global
-   wrangler publish --name 4everinbeta-chat
+   wrangler deploy --name 4everinbeta-chat
    ```
 
 4. In your HTML (e.g., `index.html`), set `window.BRAND_CHAT_ENDPOINT =

@@ -1,5 +1,13 @@
 [
   {
+    "title": "From AI Hype to AI Value",
+    "link": "blog/from-ai-hype-to-ai-value.html",
+    "slug": "from-ai-hype-to-ai-value",
+    "pubDate": "Sun, 14 Dec 2025 00:00:00 +0000",
+    "description": "A practical philosophy for AI adoption: treat data as a product, solve real problems, and run nine-week experiments that prove value before you scale.",
+    "content": "<p>Week after week I watch well-intentioned organizations treat AI adoption like an old-school enterprise software rollout. Months of planning, millions invested, and almost no empirical learning. Over the last several years I have studied the patterns behind AI wins and losses, and three beliefs sit at the core of any successful program: data first, problems first, and experiments first.</p><p>Understanding the different classes of AI\u2014traditional ML, NLP, computer vision, RPA, and GenAI\u2014lets you match the right tool to the right problem. From there, a nine-week experiment cycle helps you discover, design, prototype, validate, and decide before you scale. The result is a lightweight governance model that de-risks investments and creates a portfolio of learnings you can share across the enterprise.</p>"
+  },
+  {
     "title": "Sometimes The Best Data Is Not Digital",
     "link": "https://4everinbeta.com/2018/05/04/sometimes-the-best-data-is-not-digital/",
     "slug": "sometimes-the-best-data-is-not-digital",

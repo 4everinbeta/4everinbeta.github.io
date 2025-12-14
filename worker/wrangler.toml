@@ -3,5 +3,10 @@ main = "chat-worker.js"
 compatibility_date = "2025-01-13"
 
 [vars]
-DOCUMENT_URL = "https://4everinbeta.me/rag/documents.json"
-VECTOR_URL = "https://4everinbeta.me/rag/vectors.json"
+DOCUMENT_URL = "https://rag.4everinbeta.me/latest/documents.json"
+VECTOR_URL = "https://rag.4everinbeta.me/latest/vectors.json"
+CHAT_MODEL = "@cf/meta/llama-3.2-3b-instruct"
+EMBEDDING_MODEL = "@cf/baai/bge-small-en-v1.5"
+
+[ai]
+binding = "AI"
