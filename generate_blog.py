@@ -53,6 +53,20 @@ def nav(prefix: str = "") -> str:
         </div>
       </header>"""
 
+def render_post_hero_intro(post: Dict[str, str]) -> str:
+    intro = (post.get("heroIntro") or "").strip()
+    if intro:
+        return f'        <p class="hero__intro">{html.escape(intro)}</p>'
+
+    link = (post.get("link") or "").strip()
+    if link.startswith("http"):
+        return (
+            '        <p class="hero__intro">Originally published on '
+            f'<a href="{link}" target="_blank" rel="noopener">4everinbeta.com</a>.</p>'
+        )
+
+    return ""
+
 
 def build_list_page(posts: List[Dict[str, str]]):
     cards = []
@@ -135,7 +149,7 @@ def build_post_pages(posts: List[Dict[str, str]]):
       <section class=\"hero\">
         <p class=\"hero__eyebrow\">{date}</p>
         <h1>{title}</h1>
-        <p class=\"hero__intro\">Originally published on <a href=\"{link}\" target=\"_blank\" rel=\"noopener\">4everinbeta.com</a>.</p>
+{hero_intro}
       </section>
       <article class=\"surface post\">
         <div class=\"post-content\">
@@ -165,7 +179,7 @@ def build_post_pages(posts: List[Dict[str, str]]):
             nav=nav("../"),
             date=post["dateFormatted"],
             title=html.escape(post["title"]),
-            link=post["link"],
+            hero_intro=render_post_hero_intro(post),
             content=post["content"],
         )
         (BLOG_DIR / f"{post['slug']}.html").write_text(page)
