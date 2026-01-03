@@ -1,6 +1,7 @@
 # Compiled RAG artifacts and secrets
 rag/*.json
 private/
+node_modules/
 
 # PDF assets and large binaries (keep original copies locally)
 Ryan_Brown_Sep_25.pdf

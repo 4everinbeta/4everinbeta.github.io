@@ -11,7 +11,7 @@ CONTENT_DIR = Path("content")
 OUTPUT_DIR = Path("rag")
 CHUNK_SIZE = 600  # words
 CHUNK_OVERLAP = 120  # words
-LOCAL_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+LOCAL_MODEL_NAME = "BAAI/bge-small-en-v1.5"
 OPENAI_MODEL = os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small")
 FAKE_DIMENSION = 64
 FAKE_ENV_FLAG = "RAG_FAKE_EMBEDDINGS"
@@ -78,7 +78,7 @@ def embed_with_local_model(texts: List[str]) -> np.ndarray:
     from sentence_transformers import SentenceTransformer
 
     model = SentenceTransformer(LOCAL_MODEL_NAME)
-    return model.encode(texts, convert_to_numpy=True)
+    return model.encode(texts, convert_to_numpy=True, normalize_embeddings=True)
 
 
 def embed_with_fake_vectors(texts: List[str]) -> np.ndarray:

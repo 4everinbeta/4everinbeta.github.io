@@ -1,3 +1,12 @@
+const DEFAULT_CHAT_ENDPOINT = "https://4everinbeta-chat.workers.dev";
+
+function resolveChatEndpoint() {
+  if (typeof window !== "undefined" && window.BRAND_CHAT_ENDPOINT) {
+    return window.BRAND_CHAT_ENDPOINT;
+  }
+  return DEFAULT_CHAT_ENDPOINT;
+}
+
 const brandChatKnowledge = [
   {
     keywords: ["cloud", "azure", "aws", "ali", "migration"],
@@ -62,6 +71,7 @@ class BrandChat {
     this.messages = this.container.querySelector("[data-role='messages']");
     this.form = this.container.querySelector("[data-role='form']");
     this.input = this.form.querySelector("input");
+    this.remoteEndpoint = resolveChatEndpoint();
 
     this.toggleBtn.addEventListener("click", () => this.toggle());
     this.form.addEventListener("submit", (event) => this.handleSubmit(event));
@@ -98,7 +108,7 @@ class BrandChat {
   }
 
   reply(text) {
-    if (window.BRAND_CHAT_ENDPOINT) {
+    if (this.remoteEndpoint) {
       this.requestRemoteAnswer(text);
       return;
     }
@@ -118,7 +128,7 @@ class BrandChat {
     this.messages.appendChild(pending);
     this.messages.scrollTop = this.messages.scrollHeight;
     try {
-      const res = await fetch(window.BRAND_CHAT_ENDPOINT, {
+      const res = await fetch(this.remoteEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text })

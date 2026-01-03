@@ -1,0 +1,10 @@
+{
+  "name": "4everinbeta-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:python": "python -m unittest discover -s tests",
+    "test:worker": "node --test worker/rag-helpers.test.js",
+    "test": "npm run test:python && npm run test:worker"
+  }
+}

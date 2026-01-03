@@ -33,6 +33,9 @@ jobs:
           RAG_FAKE_EMBEDDINGS: "1"
         run: python -m unittest discover -s tests
 
+      - name: Run worker unit tests
+        run: node --test worker/rag-helpers.test.js
+
       - name: Generate embeddings
         run: python build_embeddings.py
 
