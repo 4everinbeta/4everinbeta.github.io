@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Vibe-Coded Enterprise: Everyone Builds, Nobody Owns | 4everinbeta Journal</title>
+    <link rel="icon" type="image/png" href="../logo-only-white-bluebg.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../chat.js"></script>
+  </head>
+  <body class="page page--post">
+    <main>
+      <header class="nav">
+        <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
+          <img src="../logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
+          <span class="nav__name">Ryan Brown</span>
+        </a>
+        <div class="nav__links">
+          <a href="../index.html#impact">Impact</a>
+          <a href="../index.html#career">Career</a>
+          <a href="../index.html#focus">Focus Areas</a>
+          <a href="../index.html#contact">Connect</a>
+          <a href="../4everinbeta.html">Why 4everinbeta</a>
+          <a href="../journal.html">Journal</a>
+        </div>
+      </header>
+      <section class="hero">
+        <p class="hero__eyebrow">Apr 04, 2026</p>
+        <h1>The Vibe-Coded Enterprise: Everyone Builds, Nobody Owns</h1>
+        <p class="hero__intro">Vibe coding is turning motivated business users into app builders. That hunger to remove the IT bottleneck is real, legitimate, and worth enabling. What enterprises are discovering is that the bottleneck doesn&#x27;t disappear—it moves.</p>
+      </section>
+      <article class="surface post">
+        <div class="post-content">
+<p>In early 2025, Andrej Karpathy—former research director at OpenAI, co-founder of Tesla AI—described a new way of working that he called “vibe coding.” The premise: stop thinking about syntax, stop reading documentation, just describe what you want and let the AI build it. You iterate by instinct. You fix errors by pasting them back in. You ship by feel.</p>
+
+<p>Karpathy was talking about his own workflow as an expert engineer deliberately lowering the precision bar for personal projects. But what the enterprise heard was a different, more urgent question: <em>What if our analysts could build their own tools?</em></p>
+
+<p>That question is now live inside every large organization. And the answer is more complicated than either the enthusiasts or the skeptics want to admit.</p>
+
+<h2>The Hunger Is Real</h2>
+
+<p>Before anything else, let’s be honest about what’s driving this. Business users are not trying to undermine IT. They have legitimate problems that need solving, and official channels are too slow to solve them.</p>
+
+<p>IT backlogs at large enterprises are notoriously deep. A business analyst who needs a dashboard showing regional sales velocity by product line might wait six months for that to land on an engineering sprint. An operations manager who wants to automate a weekly reconciliation report might wait longer. The people who understand the problem best—who live with it every day—have no direct path to a solution.</p>
+
+<p>Vibe coding tools change that equation. With tools like Microsoft Copilot Studio, Power Apps with AI Builder, Replit, or a capable AI assistant and a shared development environment, a motivated business user can go from problem description to working prototype in an afternoon. No Jira ticket. No sprint planning. No waiting.</p>
+
+<p>The citizen developer movement has existed for years—Microsoft’s Power Platform alone has tens of millions of users building applications without traditional coding skills. What vibe coding adds is the removal of even the low-code learning curve. You don’t need to understand connector logic or workflow editors. You describe what you want, and the AI drafts it. The productivity case is genuine.</p>
+
+<p>The question isn’t whether to enable this. Most organizations are already doing it, whether they’ve sanctioned it or not. The question is whether you do it with intention or inherit the consequences of doing it by accident.</p>
+
+<h2>How Enablement Should Work</h2>
+
+<p>A real vibe coding program for enterprise business users requires four things to be in place before the first line of AI-generated code touches anything important.</p>
+
+<p><strong>An approved toolchain with governed AI connections.</strong> Not every AI coding assistant is appropriate for enterprise use. The critical distinction is what happens to your data when a user prompts the AI. Consumer-tier tools typically use inputs to improve their models. Enterprise agreements—Microsoft 365 Copilot, GitHub Copilot Enterprise, Anthropic’s enterprise API—contractually prevent this. The approved toolchain must route through those agreements, and that list must be enforced, not aspirational. Unapproved tools are where data leakage actually happens.</p>
+
+<p><strong>Sandboxed environments for experimentation.</strong> Business users building apps should have isolated environments that cannot touch production systems or production data. That means dedicated dev/test tenants, synthetic or anonymized datasets, and explicit promotion gates before anything runs against real customer information. The sandbox is not bureaucratic friction—it’s the line between a citizen developer program and an uncontrolled experiment.</p>
+
+<p><strong>A lightweight review checkpoint before production.</strong> The output of vibe coding is code. Code that reaches production should be seen by someone capable of assessing it, even briefly. Not a full engineering review for every script—but a non-zero process that checks for hardcoded credentials, data access patterns that exceed what the use case requires, and obvious error handling gaps. The review doesn’t need to be exhaustive. It needs to exist.</p>
+
+<p><strong>AI literacy, not just tool training.</strong> Business users who understand what these systems actually do will make better decisions with them. That means teaching people not just how to use Copilot, but what kinds of tasks AI-generated code handles well versus where it confidently gets things wrong, and when a problem is genuinely self-service versus when it needs engineering involvement.</p>
+
+<h2>The Scaling Trap</h2>
+
+<p>Here’s what consistently gets missed in the enablement conversation: the goal isn’t to build a tool for yourself. The goal is to solve a problem, and problems tend to be shared.</p>
+
+<p>A business user builds a script that automates their weekly reporting. It works. Their colleague asks if they can use it. Then the whole team. Then the department director wants it pushed to everyone in the region. What started as a personal productivity tool is now expected to run reliably for a hundred users across multiple time zones, and it was built on a laptop with no error handling, no logging, no authentication model, and no consideration for what happens when the source data format changes.</p>
+
+<p>The jump from “it works for me” to “it works in production” is enormous—and it requires exactly the kind of skills that vibe coding was supposed to eliminate the need for. You need deployment infrastructure. You need access controls. You need monitoring. You need a support model. You need to know what to do when it breaks at 11pm on a Tuesday.</p>
+
+<p>The IT bottleneck that vibe coding was supposed to remove reappears the moment anyone tries to share what they built. The difference is that now you have an application in the wild that was never designed for production, maintained by someone who may not understand its own internals, running on whatever environment the builder had access to when they made it.</p>
+
+<h2>The Support Paradox</h2>
+
+<p>When a vibe-coded application breaks—and it will break—users go where they always go: IT.</p>
+
+<p>This is where the ownership gap becomes a real operational problem. IT receives a support request for an application they didn’t build, didn’t design, and have never seen. The code was generated by an AI assistant using prompts that no longer exist, by a business user who may have moved to a different role, following logic that isn’t documented anywhere because documentation was never part of the workflow.</p>
+
+<p>Even experienced engineers struggle to debug AI-generated code quickly. The patterns can be inconsistent. The variable names are sometimes arbitrary. The architecture reflects the particular phrasing of the prompts used to generate it, not any coherent design philosophy. There’s no commit history that tells you why something was done a particular way, because the “why” lived entirely in a chat window.</p>
+
+<p>IT ends up on the hook for something they fundamentally cannot own. They can either spend significant time reverse-engineering the application to fix it—time that wasn’t budgeted because the app was supposed to remove the IT burden—or they can tell users the app isn’t supported and push them back to official channels. Neither answer is satisfying, and both erode trust in both IT and the citizen developer program itself.</p>
+
+<p>The apps that don’t get escalated to IT are often worse. They get “fixed” by the original builder or a colleague with slightly more technical confidence, by prompting the AI again with a description of the error. Each iteration adds another layer of generated code on top of the last. The logic becomes increasingly opaque. After six months of patches, nobody—including the AI—can reliably explain what the application does in all cases.</p>
+
+<h2>The Hidden Gate: Data Maturity</h2>
+
+<p>Set aside the scaling and support problems for a moment. There’s a more foundational issue that most vibe coding conversations skip entirely.</p>
+
+<p>The majority of genuinely useful enterprise applications need company data. Not public data. Not synthetic data. Real operational data: customer records, sales pipelines, inventory levels, financial transactions, HR information. The use cases that justify a citizen developer program—the ones that actually move the needle—almost always require connecting to internal systems.</p>
+
+<p>Connecting to that data safely is not a configuration task. It requires certified datasets with documented lineage. It requires governed API layers that enforce access controls, prevent bulk extraction, and log queries for audit. It requires a semantic layer that defines what “revenue” and “customer” and “active account” actually mean, consistently, across the organization—so that the dashboard a business user builds in the afternoon produces numbers that match what finance will present to the board in the morning.</p>
+
+<p>That is data maturity. And most enterprises are still working toward it.</p>
+
+<p>The irony is sharp: the use cases that make vibe coding most valuable for business users are the same use cases that require data infrastructure most organizations haven’t finished building. The tools are ready. The AI models are capable. The connectors exist. What’s missing is the governed, trustworthy, well-defined data foundation that makes those connectors safe to expose.</p>
+
+<p>Without it, you’re not enabling business users to build with company data. You’re enabling them to build with whatever data they can get their hands on—exports from production systems, spreadsheets shared via email, reports pulled from BI tools and re-uploaded to somewhere the AI can read them. That is significantly worse from a security and accuracy standpoint than a well-governed connector, but it’s what happens in practice when the data foundation isn’t ready and the business need is urgent.</p>
+
+<h2>The Security Surface You’re Opening</h2>
+
+<p>Enterprise security teams are right to pay close attention to this, and they’re often looking at the wrong risks.</p>
+
+<p>The most visible concern—employees pasting sensitive data into consumer AI tools—is real but increasingly addressable through enterprise tool agreements and DLP policies. The harder problems are structural.</p>
+
+<p>AI-generated code frequently handles credentials poorly. Not because the models are bad at security, but because the people prompting them aren’t specifying security requirements. A business user who asks “write me a script that connects to our Salesforce instance and exports the top 50 accounts” is going to get working code, possibly with the credentials inline, possibly without any consideration of what permissions that connection requires or who else will see those credentials when the script gets shared.</p>
+
+<p>Insecure patterns compound as applications grow. Generated code that works for a single user with a single dataset often has no input validation, no rate limiting, no authentication layer. That’s acceptable for a personal automation. It’s a vulnerability when exposed to a department or built into a workflow that touches external data.</p>
+
+<p>The compliance surface expands in ways that can be invisible until they aren’t. A business user who builds an application that processes customer data has created a data processor under GDPR—whether they know it or not. An application that handles health information has HIPAA implications. An application that informs hiring decisions has regulatory implications entirely separate from the ones IT is thinking about. The creator didn’t consider any of this, because they were solving a spreadsheet problem, not designing a system.</p>
+
+<h2>What the Governance Framework Actually Needs to Address</h2>
+
+<p>The goal isn’t to slow down citizen development. It’s to separate the work that genuinely belongs in the hands of business users from the work that requires engineering rigor—and to make that distinction clear before someone builds the wrong thing in the wrong way.</p>
+
+<p>The tier that business users should own freely: personal automations, data formatting, report generation from governed data sources, workflow drafting and document generation. These are low blast radius, easy to scope, and don’t require production infrastructure.</p>
+
+<p>The tier that requires a handoff: anything shared across a team or department, anything that reads from or writes to production systems, anything that processes regulated data, anything that needs to run reliably on a schedule without human supervision. These need engineering involvement—not to take the app away from its creator, but to make it survivable.</p>
+
+<p>The investment that makes the second tier possible without IT becoming the bottleneck again: data maturity. Governed API layers for internal data. Certified, well-defined datasets with clear ownership. A semantic layer that ensures consistency. These aren’t AI investments in the flashy sense—they’re foundational infrastructure work that most data organizations already know they need. The rise of citizen development just makes the cost of not having it more visible and more immediate.</p>
+
+<p>The organizations that will get this right are the ones that treat vibe coding enablement as a data and governance initiative first, and a tooling initiative second. The tools are the easy part. The foundation is what determines whether business users build things that last or things that become someone else’s problem.</p>
+        </div>
+        <div class="post-footer">
+          <a class="text-link text-link--back" href="../journal.html">Back to all entries</a>
+        </div>
+      </article>
+    </main>
+    <footer>
+      <div class="footer-links">
+        <span>Castle Pines, CO</span>
+        <span>·</span>
+        <a href="../4everinbeta.html">Origin story</a>
+        <span>·</span>
+        <a href="../journal.html">Journal</a>
+        <span>·</span>
+        <a href="mailto:ryankbrown@gmail.com">ryankbrown@gmail.com</a>
+      </div>
+    </footer>
+  </body>
+</html>

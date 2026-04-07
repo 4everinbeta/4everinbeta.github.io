@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import List, Dict
 
 POSTS_JSON = Path("blog_posts.json")
-BLOG_DIR = Path("blog")
+BLOG_DIR = Path("journal")
 
 
 def load_posts() -> List[Dict[str, str]]:
@@ -49,7 +49,7 @@ def nav(prefix: str = "") -> str:
           <a href=\"{prefix}index.html#focus\">Focus Areas</a>
           <a href=\"{prefix}index.html#contact\">Connect</a>
           <a href=\"{prefix}4everinbeta.html\">Why 4everinbeta</a>
-          <a href=\"{prefix}blog.html\">Journal</a>
+          <a href=\"{prefix}journal.html\">Journal</a>
         </div>
       </header>"""
 
@@ -74,9 +74,9 @@ def build_list_page(posts: List[Dict[str, str]]):
         cards.append(
             f"""          <article class=\"card card--post\">
             <p class=\"post-date\">{post['dateFormatted']}</p>
-            <h3><a href=\"blog/{post['slug']}.html\">{html.escape(post['title'])}</a></h3>
+            <h3><a href=\"journal/{post['slug']}.html\">{html.escape(post['title'])}</a></h3>
             <p>{html.escape(post['excerpt'])}</p>
-            <a class=\"text-link\" href=\"blog/{post['slug']}.html\">Read essay</a>
+            <a class=\"text-link\" href=\"journal/{post['slug']}.html\">Read essay</a>
           </article>"""
         )
 
@@ -117,7 +117,7 @@ def build_list_page(posts: List[Dict[str, str]]):
         <span>·</span>
         <a href=\"4everinbeta.html\">Origin story</a>
         <span>·</span>
-        <a href=\"blog.html\">Journal</a>
+        <a href=\"journal.html\">Journal</a>
         <span>·</span>
         <a href=\"mailto:ryankbrown@gmail.com\">ryankbrown@gmail.com</a>
       </div>
@@ -125,7 +125,7 @@ def build_list_page(posts: List[Dict[str, str]]):
   </body>
 </html>
 """
-    Path("blog.html").write_text(template.format(nav=nav(""), cards="\n".join(cards)))
+    Path("journal.html").write_text(template.format(nav=nav(""), cards="\n".join(cards)))
 
 
 def build_post_pages(posts: List[Dict[str, str]]):
@@ -156,7 +156,7 @@ def build_post_pages(posts: List[Dict[str, str]]):
 {content}
         </div>
         <div class=\"post-footer\">
-          <a class=\"text-link text-link--back\" href=\"../blog.html\">Back to all entries</a>
+          <a class=\"text-link text-link--back\" href=\"../journal.html\">Back to all entries</a>
         </div>
       </article>
     </main>
@@ -166,7 +166,7 @@ def build_post_pages(posts: List[Dict[str, str]]):
         <span>·</span>
         <a href=\"../4everinbeta.html\">Origin story</a>
         <span>·</span>
-        <a href=\"../blog.html\">Journal</a>
+        <a href=\"../journal.html\">Journal</a>
         <span>·</span>
         <a href=\"mailto:ryankbrown@gmail.com\">ryankbrown@gmail.com</a>
       </div>
@@ -189,7 +189,7 @@ def main():
     posts = load_posts()
     build_list_page(posts)
     build_post_pages(posts)
-    print(f"Generated {len(posts)} posts into /blog and blog.html")
+    print(f"Generated {len(posts)} posts into /journal and journal.html")
 
 
 if __name__ == "__main__":

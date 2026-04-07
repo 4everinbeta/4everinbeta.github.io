@@ -61,6 +61,12 @@ node --test worker/rag-helpers.test.js
 
 # Run all tests
 npm test
+
+# Regenerate journal listing and post pages after editing blog_posts.json
+python generate_blog.py
+
+# Convert SVG to PNG for social/LinkedIn images (manual, not in CI)
+node scripts/render-svg-to-png.mjs <input.svg> <output.png>
 ```
 
 ### Deployment
@@ -115,6 +121,36 @@ The Worker includes permissive CORS headers to allow GitHub Pages frontend to ca
 - OPTIONS preflight handler for POST requests
 - All responses include CORS headers
 
+### Blog/Journal Generator
+
+`generate_blog.py` reads `blog_posts.json` and produces:
+- `journal.html` — card-grid listing page
+- `journal/[slug].html` — individual post pages
+
+`blog_posts.json` is hand-maintained (no CMS). Each entry schema:
+```json
+{
+  "title": "...",
+  "slug": "post-slug",
+  "pubDate": "Sat, 21 Dec 2025 00:00:00 +0000",
+  "link": "journal/the-post.html",
+  "description": "Short excerpt (HTML-escaped)",
+  "heroIntro": "Optional custom intro paragraph",
+  "content": "<full pre-rendered HTML body>"
+}
+```
+
+Run after adding or editing a post:
+```bash
+python generate_blog.py
+```
+
+Content is stored as pre-rendered HTML (not Markdown), so editing a post means editing the HTML directly in `blog_posts.json`.
+
+### Contact Form
+
+`chat.js` handles the contact form via `initContactForm()`. It builds a `mailto:` URI with pre-filled subject (based on intent category) and body, then triggers the user's local email client. There is no server-side form submission.
+
 ### Chat Widget Integration
 
 In HTML pages, set the endpoint before loading `chat.js`:
@@ -126,7 +162,12 @@ In HTML pages, set the endpoint before loading `chat.js`:
 <script src="chat.js"></script>
 ```
 
-If undefined, the widget falls back to keyword-based responses using `brandChatKnowledge` array.
+`chat.js` operates in two modes selected at runtime:
+
+- **Remote mode** (if `window.BRAND_CHAT_ENDPOINT` is set): POSTs questions to the Worker; shows "Synthesizing a response…" while pending; handles 4xx/5xx gracefully.
+- **Local fallback mode** (if endpoint is undefined): Uses a hardcoded `brandChatKnowledge` array with 6 topic categories (cloud/Azure, AI/ML, cost optimization, leadership, 4everinbeta brand, contact). Scores responses by keyword frequency with an artificial 400ms delay.
+
+This fallback means the chat widget works even without a deployed Worker.
 
 ## Testing Strategy
 
