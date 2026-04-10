@@ -97,7 +97,7 @@ def build_list_page(posts: List[Dict[str, str]]):
     <link rel=\"icon\" type=\"image/png\" href=\"logo-only-white-bluebg.png\" />
     <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\" />
     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin />
-    <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\" />
+    <link href=\"https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Lato:wght@300;400;700&display=swap\" rel=\"stylesheet\" />
     <link rel=\"stylesheet\" href=\"styles.css\" />
     <script defer src=\"chat.js\"></script>
   </head>
@@ -155,7 +155,7 @@ def build_post_pages(posts: List[Dict[str, str]]):
     <link rel=\"icon\" type=\"image/png\" href=\"../logo-only-white-bluebg.png\" />
     <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\" />
     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin />
-    <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\" />
+    <link href=\"https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Lato:wght@300;400;700&display=swap\" rel=\"stylesheet\" />
     <link rel=\"stylesheet\" href=\"../styles.css\" />
     <script defer src=\"../chat.js\"></script>
   </head>
