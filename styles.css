@@ -9,7 +9,9 @@
   --border: rgba(255, 255, 255, 0.08);
   --success: #5ee6a8;
   --danger: #ff7b8c;
-  font-size: 16px;
+  --accent-glow: rgba(72, 214, 255, 0.35);
+  --accent-dim: rgba(123, 108, 255, 0.08);
+  --accent-dim-border: rgba(123, 108, 255, 0.25);
 }
 
 * {
@@ -70,7 +72,7 @@ main {
 }
 
 .nav__name {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
@@ -137,7 +139,7 @@ main {
 .btn--primary {
   background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
   color: var(--bg);
-  box-shadow: 0 10px 30px rgba(72, 214, 255, 0.35);
+  box-shadow: 0 10px 30px var(--accent-glow);
 }
 
 .btn--ghost {
@@ -157,7 +159,7 @@ main {
 .section__title {
   text-transform: uppercase;
   letter-spacing: 0.35em;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--muted);
   margin-bottom: 1rem;
 }
@@ -246,8 +248,8 @@ main {
 }
 
 .metric {
-  background: rgba(123, 108, 255, 0.08);
-  border: 1px solid rgba(123, 108, 255, 0.25);
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-dim-border);
   border-radius: 1rem;
   padding: 1.5rem;
 }
@@ -315,7 +317,7 @@ footer .footer-links {
 
 .text-link::after {
   content: "→";
-  font-size: 0.85rem;
+  font-size: 0.875rem;
 }
 
 .text-link--back::after {
@@ -325,7 +327,7 @@ footer .footer-links {
 .text-link--back::before {
   content: "←";
   margin-right: 0.35rem;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
 }
 
 .post {
@@ -363,7 +365,7 @@ footer .footer-links {
 
 .wp-caption {
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   color: var(--muted);
 }
 
@@ -393,7 +395,7 @@ footer .footer-links {
 }
 
 .contact-form label {
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   display: flex;
@@ -422,12 +424,12 @@ footer .footer-links {
 .contact-form__note {
   margin: 0;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .contact-form__status {
   min-height: 1.25rem;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--accent-2);
 }
 
@@ -510,17 +512,41 @@ footer .footer-links {
   max-width: 80%;
   padding: 0.65rem 1rem;
   border-radius: 1rem;
-  font-size: 0.95rem;
+  font-size: 0.875rem;
 }
 
 .message--user {
   margin-left: auto;
-  background: rgba(123, 108, 255, 0.25);
+  background: var(--accent-dim-border);
 }
 
 .message--bot {
   margin-right: auto;
   background: rgba(255, 255, 255, 0.05);
+}
+
+/* Focus styles — WCAG 2.1 AA */
+:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+}
+
+/* Active nav link */
+.nav__links a.is-active {
+  color: var(--accent-2);
+  opacity: 1;
+}
+
+/* Section spacing modifier */
+.section--compact {
+  margin-top: 2.5rem;
+}
+
+/* Chat widget subtitle (moved from inline JS) */
+.brand-chat__subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.875rem;
 }
 
 @media (max-width: 720px) {

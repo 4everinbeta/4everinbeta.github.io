@@ -54,15 +54,15 @@ class BrandChat {
       <div class="brand-chat__panel" aria-live="polite">
         <div class="brand-chat__header">
           <strong>Ask Ryan's AI concierge</strong>
-          <p style="margin:0;color:var(--muted);font-size:0.85rem;">Get quick facts about his work and start the conversation.</p>
+          <p class="brand-chat__subtitle">Get quick facts about his work and start the conversation.</p>
         </div>
         <div class="brand-chat__body" data-role="messages"></div>
         <form class="brand-chat__input" data-role="form">
           <input type="text" placeholder="Ask about Ryan's impact..." aria-label="Message" required />
-          <button type="submit">Send</button>
+          <button type="submit">Ask</button>
         </form>
       </div>
-      <button class="brand-chat__toggle" aria-expanded="false" aria-controls="brand-chat">💬</button>
+      <button class="brand-chat__toggle" aria-expanded="false" aria-controls="brand-chat" aria-label="Open AI concierge">💬</button>
     `;
     document.body.appendChild(this.container);
 
@@ -164,7 +164,19 @@ class BrandChat {
 window.addEventListener("DOMContentLoaded", () => {
   new BrandChat();
   initContactForm();
+  markActiveNav();
 });
+
+function markActiveNav() {
+  const path = window.location.pathname;
+  document.querySelectorAll(".nav__links a").forEach((link) => {
+    const page = link.getAttribute("href").replace(/^\.\.\//, "").split("#")[0];
+    if (!page) return;
+    if (path.endsWith(page) || (page === "journal.html" && path.includes("/journal/"))) {
+      link.classList.add("is-active");
+    }
+  });
+}
 
 function initContactForm() {
   const form = document.getElementById("contact-form");

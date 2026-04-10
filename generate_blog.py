@@ -86,6 +86,14 @@ def build_list_page(posts: List[Dict[str, str]]):
     <meta charset=\"UTF-8\" />
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
     <title>Journal | 4everinbeta</title>
+    <meta name=\"description\" content=\"Essays on AI, cloud architecture, leadership, and life in perpetual beta by Ryan Brown.\" />
+    <meta property=\"og:title\" content=\"Journal | 4everinbeta\" />
+    <meta property=\"og:description\" content=\"Essays on AI, cloud architecture, leadership, and life in perpetual beta by Ryan Brown.\" />
+    <meta property=\"og:image\" content=\"https://4everinbeta.me/logo-only-white-bluebg.png\" />
+    <meta property=\"og:url\" content=\"https://4everinbeta.me/journal.html\" />
+    <meta property=\"og:type\" content=\"website\" />
+    <meta name=\"twitter:card\" content=\"summary_large_image\" />
+    <meta name=\"twitter:image\" content=\"https://4everinbeta.me/logo-only-white-bluebg.png\" />
     <link rel=\"icon\" type=\"image/png\" href=\"logo-only-white-bluebg.png\" />
     <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\" />
     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin />
@@ -136,6 +144,14 @@ def build_post_pages(posts: List[Dict[str, str]]):
     <meta charset=\"UTF-8\" />
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
     <title>{title} | 4everinbeta Journal</title>
+    <meta name=\"description\" content=\"{description}\" />
+    <meta property=\"og:title\" content=\"{title} | 4everinbeta Journal\" />
+    <meta property=\"og:description\" content=\"{description}\" />
+    <meta property=\"og:image\" content=\"https://4everinbeta.me/logo-only-white-bluebg.png\" />
+    <meta property=\"og:url\" content=\"https://4everinbeta.me/journal/{slug}.html\" />
+    <meta property=\"og:type\" content=\"article\" />
+    <meta name=\"twitter:card\" content=\"summary_large_image\" />
+    <meta name=\"twitter:image\" content=\"https://4everinbeta.me/logo-only-white-bluebg.png\" />
     <link rel=\"icon\" type=\"image/png\" href=\"../logo-only-white-bluebg.png\" />
     <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\" />
     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin />
@@ -179,6 +195,8 @@ def build_post_pages(posts: List[Dict[str, str]]):
             nav=nav("../"),
             date=post["dateFormatted"],
             title=html.escape(post["title"]),
+            description=html.escape(post.get("description", "")),
+            slug=post["slug"],
             hero_intro=render_post_hero_intro(post),
             content=post["content"],
         )
