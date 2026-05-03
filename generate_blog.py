@@ -164,7 +164,7 @@ def build_post_pages(posts: List[Dict[str, str]]):
     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin />
     <link href=\"https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Lato:wght@300;400;700&display=swap\" rel=\"stylesheet\" />
     <link rel=\"stylesheet\" href=\"../styles.css\" />
-    <script>if(localStorage.getItem('readingMode')==='true')document.documentElement.classList.add('reading-mode');</script>
+    <script>if(localStorage.getItem('darkMode')==='true')document.documentElement.classList.add('dark-mode');</script>
     <script defer src=\"../chat.js\"></script>
   </head>
   <body class=\"page page--post\">
@@ -178,14 +178,14 @@ def build_post_pages(posts: List[Dict[str, str]]):
       </section>
       <article class=\"surface post\">
         <div class=\"post-controls\">
-          <button class=\"reading-toggle\" onclick=\"document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))\" aria-label=\"Toggle reading mode\">Reading mode</button>
+          <button class=\"reading-toggle\" onclick=\"document.documentElement.classList.toggle('dark-mode');localStorage.setItem('darkMode',document.documentElement.classList.contains('dark-mode'))\" aria-label=\"Activate dark mode\">Dark mode</button>
         </div>
         <div class=\"post-content\">
 {content}
         </div>
         <div class=\"post-footer\">
           <a class=\"text-link text-link--back\" href=\"../journal.html\">Back to all entries</a>
-          <button class=\"reading-toggle\" onclick=\"document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))\" aria-label=\"Toggle reading mode\">Reading mode</button>
+          <button class=\"reading-toggle\" onclick=\"document.documentElement.classList.toggle('dark-mode');localStorage.setItem('darkMode',document.documentElement.classList.contains('dark-mode'))\" aria-label=\"Activate dark mode\">Dark mode</button>
         </div>
       </article>
     </main>

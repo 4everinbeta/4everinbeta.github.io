@@ -17,11 +17,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../styles.css" />
-    <script>if(localStorage.getItem('readingMode')==='true')document.documentElement.classList.add('reading-mode');</script>
+    <script>if(localStorage.getItem('darkMode')==='true')document.documentElement.classList.add('dark-mode');</script>
     <script defer src="../chat.js"></script>
   </head>
   <body class="page page--post">
-    <main>
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    <main id="main-content">
       <header class="nav">
         <div class="nav__bar">
           <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
@@ -49,7 +50,7 @@
       </section>
       <article class="surface post">
         <div class="post-controls">
-          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))" aria-label="Toggle reading mode">Reading mode</button>
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('dark-mode');localStorage.setItem('darkMode',document.documentElement.classList.contains('dark-mode'))" aria-label="Activate dark mode">Dark mode</button>
         </div>
         <div class="post-content">
 <p>Recently, I had a colleague of mine say that they had taken “I took a lower overall pay scale to come to &lt;my company&gt; simply because I wanted to be part of something that matters.” This was very refreshing to hear as my company is going through a phase of great attrition due to many factors, not the least of which is a tight-fisted lock on what can be developed and deployed. Many people have become disillusioned with executive leadership decisions because they appear to be blocking progress to delivering real value to ensure stability.</p>
@@ -93,7 +94,7 @@ A/B Deploys</p>
         </div>
         <div class="post-footer">
           <a class="text-link text-link--back" href="../journal.html">Back to all entries</a>
-          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))" aria-label="Toggle reading mode">Reading mode</button>
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('dark-mode');localStorage.setItem('darkMode',document.documentElement.classList.contains('dark-mode'))" aria-label="Activate dark mode">Dark mode</button>
         </div>
       </article>
     </main>

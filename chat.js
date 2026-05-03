@@ -182,9 +182,9 @@ function markActiveNav() {
 function initReadingToggle() {
   document.querySelectorAll(".reading-toggle").forEach((btn) => {
     function syncLabel() {
-      btn.textContent = document.documentElement.classList.contains("reading-mode")
-        ? "Exit reading mode"
-        : "Reading mode";
+      const dark = document.documentElement.classList.contains("dark-mode");
+      btn.textContent = dark ? "Exit dark mode" : "Dark mode";
+      btn.setAttribute("aria-label", dark ? "Deactivate dark mode" : "Activate dark mode");
     }
     syncLabel();
     btn.addEventListener("click", syncLabel);

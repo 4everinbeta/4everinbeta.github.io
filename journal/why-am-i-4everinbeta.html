@@ -17,11 +17,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../styles.css" />
-    <script>if(localStorage.getItem('readingMode')==='true')document.documentElement.classList.add('reading-mode');</script>
+    <script>if(localStorage.getItem('darkMode')==='true')document.documentElement.classList.add('dark-mode');</script>
     <script defer src="../chat.js"></script>
   </head>
   <body class="page page--post">
-    <main>
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    <main id="main-content">
       <header class="nav">
         <div class="nav__bar">
           <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
@@ -49,7 +50,7 @@
       </section>
       <article class="surface post">
         <div class="post-controls">
-          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))" aria-label="Toggle reading mode">Reading mode</button>
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('dark-mode');localStorage.setItem('darkMode',document.documentElement.classList.contains('dark-mode'))" aria-label="Activate dark mode">Dark mode</button>
         </div>
         <div class="post-content">
 <p><a href="https://4everinbeta.com/wp-content/uploads/2014/10/the_leaning_tower_of_pisa_small.jpeg"><img loading="lazy" data-attachment-id="70" data-permalink="https://4everinbeta.com/2014/10/10/why-am-i-4everinbeta/the_leaning_tower_of_pisa_small/#main" data-orig-file="https://4everinbeta.com/wp-content/uploads/2014/10/the_leaning_tower_of_pisa_small.jpeg" data-orig-size="200,305" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;8&quot;,&quot;credit&quot;:&quot;W.LLOYD MACKENZIE&quot;,&quot;camera&quot;:&quot;NIKON D700&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;1369931211&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;52&quot;,&quot;iso&quot;:&quot;200&quot;,&quot;shutter_speed&quot;:&quot;0.001&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="The_Leaning_Tower_of_Pisa_Small" data-image-description="" data-image-caption="" data-medium-file="https://4everinbeta.com/wp-content/uploads/2014/10/the_leaning_tower_of_pisa_small.jpeg?w=197" data-large-file="https://4everinbeta.com/wp-content/uploads/2014/10/the_leaning_tower_of_pisa_small.jpeg?w=200" class="alignnone size-medium wp-image-70" src="https://4everinbeta.com/wp-content/uploads/2014/10/the_leaning_tower_of_pisa_small.jpeg?w=196&#038;h=300" alt="The_Leaning_Tower_of_Pisa_Small" width="196" height="300" align="left" hspace="20" srcset="https://4everinbeta.com/wp-content/uploads/2014/10/the_leaning_tower_of_pisa_small.jpeg?w=196 196w, https://4everinbeta.com/wp-content/uploads/2014/10/the_leaning_tower_of_pisa_small.jpeg?w=98 98w, https://4everinbeta.com/wp-content/uploads/2014/10/the_leaning_tower_of_pisa_small.jpeg 200w" sizes="(max-width: 196px) 100vw, 196px" /></a> 4everinbeta is a nom de plume for me to express my thoughts on various subjects. Mostly technical, but not always. The title explains my philosophy of life in general. I will never be done. I’m constantly tweaking. Adding new features. Removing others that are no-longer useful. And, just like any beta product, I am chock-full of defects. This is reinforced everyday with my interaction with others. (My wife and child inform me of new defects everyday!) It is the other individuals in my life and my interactions with them both personally and virtually that uncover these defects. It&#8217;s my responsibility to track these defects and strive to fix them.</p>
@@ -64,7 +65,7 @@
         </div>
         <div class="post-footer">
           <a class="text-link text-link--back" href="../journal.html">Back to all entries</a>
-          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))" aria-label="Toggle reading mode">Reading mode</button>
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('dark-mode');localStorage.setItem('darkMode',document.documentElement.classList.contains('dark-mode'))" aria-label="Activate dark mode">Dark mode</button>
         </div>
       </article>
     </main>

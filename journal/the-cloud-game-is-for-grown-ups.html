@@ -17,11 +17,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../styles.css" />
-    <script>if(localStorage.getItem('readingMode')==='true')document.documentElement.classList.add('reading-mode');</script>
+    <script>if(localStorage.getItem('darkMode')==='true')document.documentElement.classList.add('dark-mode');</script>
     <script defer src="../chat.js"></script>
   </head>
   <body class="page page--post">
-    <main>
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    <main id="main-content">
       <header class="nav">
         <div class="nav__bar">
           <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
@@ -49,7 +50,7 @@
       </section>
       <article class="surface post">
         <div class="post-controls">
-          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))" aria-label="Toggle reading mode">Reading mode</button>
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('dark-mode');localStorage.setItem('darkMode',document.documentElement.classList.contains('dark-mode'))" aria-label="Activate dark mode">Dark mode</button>
         </div>
         <div class="post-content">
 <p><a href="https://4everinbeta.com/wp-content/uploads/2015/02/tantrum.jpg"><img loading="lazy" data-attachment-id="139" data-permalink="https://4everinbeta.com/2015/02/10/the-cloud-game-is-for-grown-ups/tantrum/#main" data-orig-file="https://4everinbeta.com/wp-content/uploads/2015/02/tantrum.jpg" data-orig-size="300,300" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="tantrum" data-image-description="" data-image-caption="" data-medium-file="https://4everinbeta.com/wp-content/uploads/2015/02/tantrum.jpg?w=300" data-large-file="https://4everinbeta.com/wp-content/uploads/2015/02/tantrum.jpg?w=300" class=" size-full wp-image-139 alignright" src="https://4everinbeta.com/wp-content/uploads/2015/02/tantrum.jpg?w=1008" alt="tantrum"   srcset="https://4everinbeta.com/wp-content/uploads/2015/02/tantrum.jpg 300w, https://4everinbeta.com/wp-content/uploads/2015/02/tantrum.jpg?w=150&amp;h=150 150w" sizes="(max-width: 300px) 100vw, 300px" /></a>Listening to a recent podcast on Software Engineering Radio featuring Adrian Cockroft speaking about the modern cloud-based platform, I was left bursting with thoughts. He covered a lot of topics which I hope to cover in the near future. However, one in particular hit me like a ton of bricks. He mentioned that he has seen many retailers and manufacturers of goods choosing to build their own private clouds rather than trust Amazon, someone they see as a rival, to provide their cloud infrastructure. To this, Adrian had many great points. I&#8217;d like to outline some of them as best that I can and add some of my own thoughts. (All of these are in my own words inspired by Adrian&#8217;s thoughts.) I&#8217;d highly recommend you ceck-out the podcast yourself. I&#8217;ll provide a link at the end.</p>
@@ -69,7 +70,7 @@
         </div>
         <div class="post-footer">
           <a class="text-link text-link--back" href="../journal.html">Back to all entries</a>
-          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))" aria-label="Toggle reading mode">Reading mode</button>
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('dark-mode');localStorage.setItem('darkMode',document.documentElement.classList.contains('dark-mode'))" aria-label="Activate dark mode">Dark mode</button>
         </div>
       </article>
     </main>
