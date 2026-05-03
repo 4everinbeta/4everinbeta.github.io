@@ -23,12 +23,18 @@
     <script defer src="chat.js"></script>
   </head>
   <body class="page page--story">
-    <main>
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    <main id="main-content">
       <header class="nav">
-        <a class="nav__brand" href="index.html" aria-label="Ryan Brown, 4everinbeta">
-          <img src="logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
-          <span class="nav__name">Ryan Brown</span>
-        </a>
+        <div class="nav__bar">
+          <a class="nav__brand" href="index.html" aria-label="Ryan Brown, 4everinbeta">
+            <img src="logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
+            <span class="nav__name">Ryan Brown</span>
+          </a>
+          <button class="nav__hamburger" aria-label="Open navigation" onclick="var n=this.closest('.nav');n.classList.toggle('nav--open');this.setAttribute('aria-label',n.classList.contains('nav--open')?'Close navigation':'Open navigation')">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
         <div class="nav__links">
           <a href="index.html#impact">Impact</a>
           <a href="index.html#career">Career</a>
@@ -36,6 +42,7 @@
           <a href="index.html#contact">Connect</a>
           <a href="4everinbeta.html">Why 4everinbeta</a>
           <a href="journal.html">Journal</a>
+          <a href="resume.html">Resume</a>
         </div>
       </header>
 
@@ -57,7 +64,7 @@
       </section>
 
       <section id="principles" class="section">
-        <p class="section__title">Principles</p>
+        <h2 class="section__title">Principles</h2>
         <div class="card-grid">
           <article class="card">
             <h3>Perpetual learning</h3>
@@ -91,7 +98,7 @@
       </section>
 
       <section id="essay" class="section">
-        <p class="section__title">From essay to ethos</p>
+        <h2 class="section__title">From essay to ethos</h2>
         <div class="surface">
           <div class="timeline">
             <div class="timeline__item">

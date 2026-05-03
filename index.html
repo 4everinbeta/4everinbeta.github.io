@@ -25,12 +25,18 @@
     <script defer src="chat.js"></script>
   </head>
   <body class="page page--home">
-    <main>
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    <main id="main-content">
       <header class="nav">
-        <a class="nav__brand" href="index.html" aria-label="Ryan Brown, 4everinbeta">
-          <img src="logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
-          <span class="nav__name">Ryan Brown</span>
-        </a>
+        <div class="nav__bar">
+          <a class="nav__brand" href="index.html" aria-label="Ryan Brown, 4everinbeta">
+            <img src="logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
+            <span class="nav__name">Ryan Brown</span>
+          </a>
+          <button class="nav__hamburger" aria-label="Open navigation" onclick="var n=this.closest('.nav');n.classList.toggle('nav--open');this.setAttribute('aria-label',n.classList.contains('nav--open')?'Close navigation':'Open navigation')">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
         <div class="nav__links">
           <a href="#impact">Impact</a>
           <a href="#career">Career</a>
@@ -38,6 +44,7 @@
           <a href="#contact">Connect</a>
           <a href="4everinbeta.html">Why 4everinbeta</a>
           <a href="journal.html">Journal</a>
+          <a href="resume.html">Resume</a>
         </div>
       </header>
 
@@ -61,7 +68,7 @@
       </section>
 
       <section id="impact" class="section">
-        <p class="section__title">Signature impact</p>
+        <h2 class="section__title">Signature impact</h2>
         <div class="card-grid">
           <article class="card">
             <h3>Modernized mortgage core (Pulte Financial Services)</h3>
@@ -100,7 +107,7 @@
       </section>
 
       <section id="career" class="section">
-        <p class="section__title">Career timeline</p>
+        <h2 class="section__title">Career timeline</h2>
         <div class="surface">
           <div class="timeline">
             <div class="timeline__item">
@@ -146,7 +153,7 @@
       </section>
 
       <section id="focus" class="section">
-        <p class="section__title">Operating system</p>
+        <h2 class="section__title">Operating system</h2>
         <div class="flex">
           <article class="surface">
             <h3>Board-ready strategy</h3>

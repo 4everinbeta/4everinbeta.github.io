@@ -17,15 +17,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../styles.css" />
+    <script>if(localStorage.getItem('readingMode')==='true')document.documentElement.classList.add('reading-mode');</script>
     <script defer src="../chat.js"></script>
   </head>
   <body class="page page--post">
     <main>
       <header class="nav">
-        <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
-          <img src="../logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
-          <span class="nav__name">Ryan Brown</span>
-        </a>
+        <div class="nav__bar">
+          <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
+            <img src="../logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
+            <span class="nav__name">Ryan Brown</span>
+          </a>
+          <button class="nav__hamburger" aria-label="Open navigation" onclick="var n=this.closest('.nav');n.classList.toggle('nav--open');this.setAttribute('aria-label',n.classList.contains('nav--open')?'Close navigation':'Open navigation')">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
         <div class="nav__links">
           <a href="../index.html#impact">Impact</a>
           <a href="../index.html#career">Career</a>
@@ -33,6 +39,7 @@
           <a href="../index.html#contact">Connect</a>
           <a href="../4everinbeta.html">Why 4everinbeta</a>
           <a href="../journal.html">Journal</a>
+          <a href="../resume.html">Resume</a>
         </div>
       </header>
       <section class="hero">
@@ -41,6 +48,9 @@
         <p class="hero__intro">Vibe coding is turning motivated business users into app builders. That hunger to remove the IT bottleneck is real, legitimate, and worth enabling. What enterprises are discovering is that the bottleneck doesn&#x27;t disappear—it moves.</p>
       </section>
       <article class="surface post">
+        <div class="post-controls">
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))" aria-label="Toggle reading mode">Reading mode</button>
+        </div>
         <div class="post-content">
 <p>In early 2025, Andrej Karpathy—former research director at OpenAI, co-founder of Tesla AI—described a new way of working that he called “vibe coding.” The premise: stop thinking about syntax, stop reading documentation, just describe what you want and let the AI build it. You iterate by instinct. You fix errors by pasting them back in. You ship by feel.</p>
 
@@ -134,6 +144,7 @@
         </div>
         <div class="post-footer">
           <a class="text-link text-link--back" href="../journal.html">Back to all entries</a>
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))" aria-label="Toggle reading mode">Reading mode</button>
         </div>
       </article>
     </main>

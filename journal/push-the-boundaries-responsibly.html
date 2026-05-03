@@ -17,15 +17,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../styles.css" />
+    <script>if(localStorage.getItem('readingMode')==='true')document.documentElement.classList.add('reading-mode');</script>
     <script defer src="../chat.js"></script>
   </head>
   <body class="page page--post">
     <main>
       <header class="nav">
-        <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
-          <img src="../logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
-          <span class="nav__name">Ryan Brown</span>
-        </a>
+        <div class="nav__bar">
+          <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
+            <img src="../logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
+            <span class="nav__name">Ryan Brown</span>
+          </a>
+          <button class="nav__hamburger" aria-label="Open navigation" onclick="var n=this.closest('.nav');n.classList.toggle('nav--open');this.setAttribute('aria-label',n.classList.contains('nav--open')?'Close navigation':'Open navigation')">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
         <div class="nav__links">
           <a href="../index.html#impact">Impact</a>
           <a href="../index.html#career">Career</a>
@@ -33,6 +39,7 @@
           <a href="../index.html#contact">Connect</a>
           <a href="../4everinbeta.html">Why 4everinbeta</a>
           <a href="../journal.html">Journal</a>
+          <a href="../resume.html">Resume</a>
         </div>
       </header>
       <section class="hero">
@@ -41,6 +48,9 @@
         <p class="hero__intro">Originally published on <a href="https://4everinbeta.com/2014/12/09/push-the-boundaries-responsibly/" target="_blank" rel="noopener">4everinbeta.com</a>.</p>
       </section>
       <article class="surface post">
+        <div class="post-controls">
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))" aria-label="Toggle reading mode">Reading mode</button>
+        </div>
         <div class="post-content">
 <p>Recently, I had a colleague of mine say that they had taken “I took a lower overall pay scale to come to &lt;my company&gt; simply because I wanted to be part of something that matters.” This was very refreshing to hear as my company is going through a phase of great attrition due to many factors, not the least of which is a tight-fisted lock on what can be developed and deployed. Many people have become disillusioned with executive leadership decisions because they appear to be blocking progress to delivering real value to ensure stability.</p>
 <p>This has been sad to see as I joined my current company for the exact same reason and with the exact same sacrifice in compensation in order to make change that I believe this company is fantastically positioned to affect. Many of the individuals that have been the most influential in making real, substantive, progress toward our end-goal, have left for other opportunities over the past 6-12 months as a result. Most, to other companies in the same or related industries that they believe have a clear, concise vision and the will and motivation to take risks in order to push forward.</p>
@@ -83,6 +93,7 @@ A/B Deploys</p>
         </div>
         <div class="post-footer">
           <a class="text-link text-link--back" href="../journal.html">Back to all entries</a>
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))" aria-label="Toggle reading mode">Reading mode</button>
         </div>
       </article>
     </main>

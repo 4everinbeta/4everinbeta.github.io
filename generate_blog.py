@@ -39,10 +39,15 @@ def clean_excerpt(text: str) -> str:
 
 def nav(prefix: str = "") -> str:
     return f"""      <header class=\"nav\">
-        <a class=\"nav__brand\" href=\"{prefix}index.html\" aria-label=\"Ryan Brown, 4everinbeta\">
-          <img src=\"{prefix}logo-name-horizontal-white-transbg.png\" alt=\"4everinbeta logo\" class=\"nav__logo\" />
-          <span class=\"nav__name\">Ryan Brown</span>
-        </a>
+        <div class=\"nav__bar\">
+          <a class=\"nav__brand\" href=\"{prefix}index.html\" aria-label=\"Ryan Brown, 4everinbeta\">
+            <img src=\"{prefix}logo-name-horizontal-white-transbg.png\" alt=\"4everinbeta logo\" class=\"nav__logo\" />
+            <span class=\"nav__name\">Ryan Brown</span>
+          </a>
+          <button class=\"nav__hamburger\" aria-label=\"Open navigation\" onclick=\"var n=this.closest('.nav');n.classList.toggle('nav--open');this.setAttribute('aria-label',n.classList.contains('nav--open')?'Close navigation':'Open navigation')\">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
         <div class=\"nav__links\">
           <a href=\"{prefix}index.html#impact\">Impact</a>
           <a href=\"{prefix}index.html#career\">Career</a>
@@ -50,6 +55,7 @@ def nav(prefix: str = "") -> str:
           <a href=\"{prefix}index.html#contact\">Connect</a>
           <a href=\"{prefix}4everinbeta.html\">Why 4everinbeta</a>
           <a href=\"{prefix}journal.html\">Journal</a>
+          <a href=\"{prefix}resume.html\">Resume</a>
         </div>
       </header>"""
 
@@ -102,7 +108,8 @@ def build_list_page(posts: List[Dict[str, str]]):
     <script defer src=\"chat.js\"></script>
   </head>
   <body class=\"page page--blog\">
-    <main>
+    <a href=\"#main-content\" class=\"skip-nav\">Skip to main content</a>
+    <main id=\"main-content\">
 {nav}
       <section class=\"hero\">
         <p class=\"hero__eyebrow\">Journal</p>
@@ -113,7 +120,7 @@ def build_list_page(posts: List[Dict[str, str]]):
         </p>
       </section>
       <section class=\"section\">
-        <p class=\"section__title\">All entries</p>
+        <h2 class=\"section__title\">All entries</h2>
         <div class=\"card-grid blog-grid\">
 {cards}
         </div>
@@ -157,10 +164,12 @@ def build_post_pages(posts: List[Dict[str, str]]):
     <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin />
     <link href=\"https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Lato:wght@300;400;700&display=swap\" rel=\"stylesheet\" />
     <link rel=\"stylesheet\" href=\"../styles.css\" />
+    <script>if(localStorage.getItem('readingMode')==='true')document.documentElement.classList.add('reading-mode');</script>
     <script defer src=\"../chat.js\"></script>
   </head>
   <body class=\"page page--post\">
-    <main>
+    <a href=\"#main-content\" class=\"skip-nav\">Skip to main content</a>
+    <main id=\"main-content\">
 {nav}
       <section class=\"hero\">
         <p class=\"hero__eyebrow\">{date}</p>
@@ -168,11 +177,15 @@ def build_post_pages(posts: List[Dict[str, str]]):
 {hero_intro}
       </section>
       <article class=\"surface post\">
+        <div class=\"post-controls\">
+          <button class=\"reading-toggle\" onclick=\"document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))\" aria-label=\"Toggle reading mode\">Reading mode</button>
+        </div>
         <div class=\"post-content\">
 {content}
         </div>
         <div class=\"post-footer\">
           <a class=\"text-link text-link--back\" href=\"../journal.html\">Back to all entries</a>
+          <button class=\"reading-toggle\" onclick=\"document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))\" aria-label=\"Toggle reading mode\">Reading mode</button>
         </div>
       </article>
     </main>

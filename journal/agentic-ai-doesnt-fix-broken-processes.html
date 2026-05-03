@@ -17,15 +17,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../styles.css" />
+    <script>if(localStorage.getItem('readingMode')==='true')document.documentElement.classList.add('reading-mode');</script>
     <script defer src="../chat.js"></script>
   </head>
   <body class="page page--post">
     <main>
       <header class="nav">
-        <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
-          <img src="../logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
-          <span class="nav__name">Ryan Brown</span>
-        </a>
+        <div class="nav__bar">
+          <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
+            <img src="../logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
+            <span class="nav__name">Ryan Brown</span>
+          </a>
+          <button class="nav__hamburger" aria-label="Open navigation" onclick="var n=this.closest('.nav');n.classList.toggle('nav--open');this.setAttribute('aria-label',n.classList.contains('nav--open')?'Close navigation':'Open navigation')">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
         <div class="nav__links">
           <a href="../index.html#impact">Impact</a>
           <a href="../index.html#career">Career</a>
@@ -33,6 +39,7 @@
           <a href="../index.html#contact">Connect</a>
           <a href="../4everinbeta.html">Why 4everinbeta</a>
           <a href="../journal.html">Journal</a>
+          <a href="../resume.html">Resume</a>
         </div>
       </header>
       <section class="hero">
@@ -41,6 +48,9 @@
         <p class="hero__intro">The pilot phase is over. CTOs are now being asked to scale agentic AI on undocumented processes, ungoverned data, and teams already building on their own. That&#x27;s the same foundation that broke citizen development. The difference is that agents don&#x27;t wait for someone to catch the problem.</p>
       </section>
       <article class="surface post">
+        <div class="post-controls">
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))" aria-label="Toggle reading mode">Reading mode</button>
+        </div>
         <div class="post-content">
 <p>In February 2026, <a href="https://hbr.org/sponsored/2026/02/a-blueprint-for-enterprise-wide-agentic-ai-transformation" target="_blank" rel="noopener">Harvard Business Review published a blueprint for enterprise-wide agentic AI transformation</a>. Among the frameworks and recommendations was a line that had nothing to do with AI capability: "When introduced into a weak or fragmented system, AI doesn't fix the system; it amplifies its flaws." That observation landed the same month <a href="https://www.fastcompany.com/91522295/enterprise-adoption-of-agentic-and-gen-ai" target="_blank" rel="noopener">Fast Company reported that CIOs have moved past the experimentation and pilot phases</a> and are now deploying agentic AI into core workflows.</p>
 
@@ -112,6 +122,7 @@
         </div>
         <div class="post-footer">
           <a class="text-link text-link--back" href="../journal.html">Back to all entries</a>
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))" aria-label="Toggle reading mode">Reading mode</button>
         </div>
       </article>
     </main>

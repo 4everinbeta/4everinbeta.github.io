@@ -12,3 +12,4 @@ Ryan_Brown_Sep_25.pdf:Zone.Identifier
 # OS-specific editor files
 .DS_Store
 Thumbs.db
+*.Zone.Identifier

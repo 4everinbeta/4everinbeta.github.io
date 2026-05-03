@@ -17,15 +17,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../styles.css" />
+    <script>if(localStorage.getItem('readingMode')==='true')document.documentElement.classList.add('reading-mode');</script>
     <script defer src="../chat.js"></script>
   </head>
   <body class="page page--post">
     <main>
       <header class="nav">
-        <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
-          <img src="../logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
-          <span class="nav__name">Ryan Brown</span>
-        </a>
+        <div class="nav__bar">
+          <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
+            <img src="../logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
+            <span class="nav__name">Ryan Brown</span>
+          </a>
+          <button class="nav__hamburger" aria-label="Open navigation" onclick="var n=this.closest('.nav');n.classList.toggle('nav--open');this.setAttribute('aria-label',n.classList.contains('nav--open')?'Close navigation':'Open navigation')">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
         <div class="nav__links">
           <a href="../index.html#impact">Impact</a>
           <a href="../index.html#career">Career</a>
@@ -33,6 +39,7 @@
           <a href="../index.html#contact">Connect</a>
           <a href="../4everinbeta.html">Why 4everinbeta</a>
           <a href="../journal.html">Journal</a>
+          <a href="../resume.html">Resume</a>
         </div>
       </header>
       <section class="hero">
@@ -41,6 +48,9 @@
         <p class="hero__intro">Originally published on <a href="https://4everinbeta.com/2015/01/15/is-reactive-programming-more-than-just-hype/" target="_blank" rel="noopener">4everinbeta.com</a>.</p>
       </section>
       <article class="surface post">
+        <div class="post-controls">
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))" aria-label="Toggle reading mode">Reading mode</button>
+        </div>
         <div class="post-content">
 <p>In short? Yes. Class over. Thanks for coming…</p>
 <p>No? Ok, I suppose maybe I should explain why I feel this way. In this brief article I will attempt to explain reactive programming from a high level, ivory tower, standpoint. I’m not planning on getting into implementation details. there are many, many ways to go about it and I would not begin to presume I understand all of my readers requirements are. But I hope that by the end of this you will at least be curious enough to follow my resource links to learn more and maybe even do your own research to see how you might apply these principles in your own environment.</p>
@@ -122,6 +132,7 @@
         </div>
         <div class="post-footer">
           <a class="text-link text-link--back" href="../journal.html">Back to all entries</a>
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('reading-mode');localStorage.setItem('readingMode',document.documentElement.classList.contains('reading-mode'))" aria-label="Toggle reading mode">Reading mode</button>
         </div>
       </article>
     </main>

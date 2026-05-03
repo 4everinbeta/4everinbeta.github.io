@@ -12,6 +12,22 @@
   --accent-glow: rgba(74, 143, 196, 0.3);
   --accent-dim: rgba(74, 143, 196, 0.06);
   --accent-dim-border: rgba(74, 143, 196, 0.2);
+  /* Typography scale — 6 stops + clamp for hero/display */
+  --fs-xs: 0.68rem;       /* eyebrows, section labels, badges, dates */
+  --fs-sm: 0.75rem;       /* buttons, nav links, text-links, footer */
+  --fs-caption: 0.875rem; /* meta, notes, captions, messages */
+  --fs-body: 1rem;        /* body text, inputs */
+  --fs-card: 1.1rem;      /* card titles, lead text */
+  --fs-subhead: 1.5rem;   /* post headings, resume sections */
+  /* Spacing scale — 8 stops on 4px grid (16px base) */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.25rem;
+  --sp-6: 1.5rem;
+  --sp-8: 2rem;
+  --sp-12: 3rem;
 }
 
 * {
@@ -46,19 +62,16 @@ a:hover {
 }
 
 main {
-  width: min(1200px, 90vw);
+  width: min(1200px, 92vw);
   margin: 0 auto;
-  padding: 0 0 6rem;
+  padding: 0 0 4rem;
 }
 
 /* ─── NAV ────────────────────────────────────────── */
 
 .nav {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  flex-direction: column;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -66,7 +79,14 @@ main {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
-  padding: 1rem 0;
+  padding: 0.75rem 0;
+}
+
+.nav__bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .nav__brand {
@@ -74,11 +94,11 @@ main {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.2rem;
-  flex: 1 1 180px;
+  flex-shrink: 0;
 }
 
 .nav__logo {
-  height: clamp(40px, 5vw, 52px);
+  height: clamp(36px, 5vw, 52px);
   width: auto;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
 }
@@ -91,25 +111,70 @@ main {
   font-weight: 400;
 }
 
-.nav__links {
+/* Hamburger button — visible on mobile, hidden at 768px+ */
+.nav__hamburger {
   display: flex;
-  gap: 1.75rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  flex: 2 1 420px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: var(--muted);
+  transition: color 0.2s ease;
+}
+
+.nav__hamburger:hover {
+  color: var(--accent);
+}
+
+.nav__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+
+.nav--open .nav__hamburger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav--open .nav__hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav--open .nav__hamburger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Nav links — hidden on mobile, shown when open */
+.nav__links {
+  display: none;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem 0 0.25rem;
+  width: 100%;
+}
+
+.nav--open .nav__links {
+  display: flex;
 }
 
 .nav__links a {
   font-weight: 400;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
   transition: color 0.2s ease;
   text-decoration: none;
 }
 
-.nav__links a:hover {
+.nav__links a:hover,
+.nav__links a.is-active {
   color: var(--accent);
   text-decoration: none;
 }
@@ -117,7 +182,7 @@ main {
 /* ─── HERO ───────────────────────────────────────── */
 
 .hero {
-  padding: 5rem 0 2.5rem;
+  padding: 2.5rem 0 1.75rem;
 }
 
 .hero__eyebrow {
@@ -130,7 +195,7 @@ main {
 
 .hero h1 {
   font-family: "Fraunces", Georgia, serif;
-  font-size: clamp(2.8rem, 5vw, 5.5rem);
+  font-size: clamp(2rem, 7vw, 5.5rem);
   font-weight: 300;
   font-optical-sizing: auto;
   line-height: 1.08;
@@ -140,9 +205,9 @@ main {
 
 .hero__intro {
   max-width: 55ch;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   color: var(--muted);
-  font-size: 1.05rem;
+  font-size: 1rem;
   line-height: 1.8;
 }
 
@@ -156,7 +221,7 @@ main {
 
 .btn {
   border: none;
-  padding: 0.85rem 2rem;
+  padding: 0.85rem 1.5rem;
   border-radius: 3px;
   font-size: 0.78rem;
   font-weight: 700;
@@ -189,7 +254,7 @@ main {
 /* ─── SECTIONS ───────────────────────────────────── */
 
 .section {
-  margin-top: 5rem;
+  margin-top: 3.5rem;
 }
 
 .section__title {
@@ -198,13 +263,13 @@ main {
   font-size: 0.68rem;
   font-weight: 700;
   color: var(--muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border);
 }
 
 .section--compact {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 }
 
 /* Scroll entrance — modern browsers only, no-op elsewhere */
@@ -231,7 +296,7 @@ main {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
   gap: 1px;
   background: var(--border);
   border: 1px solid var(--border);
@@ -242,7 +307,7 @@ main {
 .card {
   background: var(--card);
   border: none;
-  padding: 2rem;
+  padding: 1.25rem;
   border-radius: 0;
   border-left: 3px solid transparent;
   transition: border-left-color 0.25s ease, background 0.25s ease;
@@ -271,7 +336,7 @@ main {
 .surface {
   background: rgba(8, 10, 14, 0.6);
   border: 1px solid var(--border);
-  padding: 2.5rem;
+  padding: 1.5rem;
   border-radius: 4px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
@@ -293,21 +358,21 @@ main {
 .timeline {
   position: relative;
   margin-top: 1rem;
-  padding-left: 2rem;
+  padding-left: 1.5rem;
 }
 
 .timeline::before {
   content: "";
   position: absolute;
-  inset: 0 auto 0 0.4rem;
+  inset: 0 auto 0 0.3rem;
   width: 1px;
   background: linear-gradient(to bottom, var(--accent), transparent);
 }
 
 .timeline__item {
   position: relative;
-  margin-bottom: 2.75rem;
-  padding-left: 1.5rem;
+  margin-bottom: 2.25rem;
+  padding-left: 1.25rem;
 }
 
 .timeline__item::before {
@@ -355,7 +420,7 @@ main {
 
 .metrics {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 1px;
   background: var(--border);
   border: 1px solid var(--border);
@@ -367,12 +432,12 @@ main {
   background: var(--accent-dim);
   border: none;
   border-radius: 0;
-  padding: 2rem 1.75rem;
+  padding: 1.5rem 1.25rem;
 }
 
 .metric strong {
   font-family: "Fraunces", Georgia, serif;
-  font-size: 3.25rem;
+  font-size: clamp(2rem, 6vw, 3.25rem);
   font-weight: 600;
   font-optical-sizing: auto;
   display: block;
@@ -390,10 +455,10 @@ main {
 /* ─── FOOTER ─────────────────────────────────────── */
 
 footer {
-  width: min(1200px, 90vw);
-  margin: 4rem auto 0;
+  width: min(1200px, 92vw);
+  margin: 3rem auto 0;
   border-top: 1px solid var(--border);
-  padding: 2rem 0 3rem;
+  padding: 1.75rem 0 2.5rem;
   color: var(--muted);
   font-size: 0.8rem;
   letter-spacing: 0.06em;
@@ -401,8 +466,9 @@ footer {
 
 footer .footer-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 footer a {
@@ -418,7 +484,7 @@ footer a:hover {
 /* ─── BLOG / JOURNAL ─────────────────────────────── */
 
 .blog-grid {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
 }
 
 .card--post h3 {
@@ -475,6 +541,25 @@ footer a:hover {
   margin: 0 auto 3rem;
 }
 
+.post-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-footer {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .post-content > * {
   margin-bottom: 1.5rem;
 }
@@ -489,8 +574,8 @@ footer a:hover {
   font-family: "Fraunces", Georgia, serif;
   font-weight: 300;
   font-optical-sizing: auto;
-  font-size: 1.75rem;
-  margin-top: 2.75rem;
+  font-size: 1.6rem;
+  margin-top: 2.5rem;
   letter-spacing: -0.01em;
   color: var(--text);
 }
@@ -533,8 +618,8 @@ footer a:hover {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 2rem;
 }
 
 .contact-form {
@@ -543,7 +628,7 @@ footer a:hover {
   gap: 1rem;
   background: rgba(14, 17, 24, 0.7);
   border: 1px solid var(--border);
-  padding: 1.75rem;
+  padding: 1.5rem;
   border-radius: 4px;
 }
 
@@ -600,8 +685,8 @@ footer a:hover {
 
 .brand-chat {
   position: fixed;
-  right: 2rem;
-  bottom: 2rem;
+  right: 1rem;
+  bottom: 1rem;
   z-index: 50;
 }
 
@@ -623,7 +708,7 @@ footer a:hover {
 }
 
 .brand-chat__panel {
-  width: min(360px, 90vw);
+  width: min(340px, calc(100vw - 2rem));
   background: var(--bg-alt);
   border: 1px solid var(--border);
   border-radius: 4px;
@@ -706,12 +791,6 @@ footer a:hover {
   outline-offset: 3px;
 }
 
-/* ─── ACTIVE NAV ─────────────────────────────────── */
-
-.nav__links a.is-active {
-  color: var(--accent);
-}
-
 /* ─── CHAT SUBTITLE ──────────────────────────────── */
 
 .brand-chat__subtitle {
@@ -720,36 +799,493 @@ footer a:hover {
   font-size: 0.875rem;
 }
 
+/* ─── READING TOGGLE BUTTON ──────────────────────── */
+
+.reading-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: "Lato", sans-serif;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.reading-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ─── READING MODE ───────────────────────────────── */
+
+.reading-mode {
+  background: #f5f2ee;
+  color: #1c1b18;
+}
+
+.reading-mode body,
+.reading-mode main {
+  background: transparent;
+}
+
+.reading-mode .nav {
+  background: rgba(245, 242, 238, 0.94);
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+.reading-mode .nav__links a {
+  color: #5a5855;
+}
+
+.reading-mode .nav__links a:hover,
+.reading-mode .nav__links a.is-active {
+  color: #2e6fa3;
+}
+
+.reading-mode .nav__hamburger {
+  color: #5a5855;
+}
+
+.reading-mode .hero h1 {
+  color: #1c1b18;
+}
+
+.reading-mode .hero__eyebrow {
+  color: #2e6fa3;
+}
+
+.reading-mode .hero__intro {
+  color: #4a4845;
+}
+
+.reading-mode .surface {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.reading-mode .post-content p {
+  color: #2e2c28;
+  font-size: 1.1rem;
+  line-height: 2;
+}
+
+.reading-mode .post-content h2 {
+  color: #1c1b18;
+}
+
+.reading-mode .post-content blockquote {
+  color: #2e2c28;
+  border-left-color: #2e6fa3;
+}
+
+.reading-mode .post-content ul,
+.reading-mode .post-content ol {
+  color: #2e2c28;
+}
+
+.reading-mode .post-content a {
+  color: #1d5a8a;
+}
+
+.reading-mode .post-controls {
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+.reading-mode .post-footer {
+  border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+.reading-mode .reading-toggle {
+  border-color: rgba(0, 0, 0, 0.18);
+  color: #4a4845;
+}
+
+.reading-mode .reading-toggle:hover {
+  border-color: #2e6fa3;
+  color: #2e6fa3;
+}
+
+.reading-mode .text-link {
+  color: #2e6fa3;
+}
+
+.reading-mode .section__title {
+  color: #6a6865;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+.reading-mode .brand-chat {
+  display: none;
+}
+
+footer .reading-mode {
+  border-top-color: rgba(0, 0, 0, 0.1);
+  color: #6a6865;
+}
+
+.reading-mode footer {
+  border-top-color: rgba(0, 0, 0, 0.1);
+  color: #6a6865;
+}
+
+.reading-mode footer a {
+  color: #6a6865;
+}
+
+.reading-mode footer a:hover {
+  color: #2e6fa3;
+}
+
+/* ─── RESUME PAGE ────────────────────────────────── */
+
+.resume-header {
+  margin-bottom: 0.5rem;
+}
+
+.resume-header p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+}
+
+.resume-section {
+  margin-top: 2.5rem;
+}
+
+.resume-section h2 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 300;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.resume-role {
+  margin-bottom: 2rem;
+}
+
+.resume-role h3 {
+  margin: 0 0 0.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.resume-role .resume-meta {
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  font-weight: 400;
+}
+
+.resume-role ul {
+  padding-left: 1.25rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.resume-role ul li {
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.resume-skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: 1.25rem;
+}
+
+.resume-skills__group h4 {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+}
+
+.resume-skills__group ul {
+  padding-left: 1rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.resume-skills__group ul li {
+  margin-bottom: 0.25rem;
+}
+
+.resume-certs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 1rem;
+}
+
+.resume-cert {
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-dim-border);
+  border-radius: 3px;
+  padding: 0.85rem 1rem;
+}
+
+.resume-cert strong {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.resume-cert span {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.resume-print-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.reading-mode .resume-section h2 {
+  color: #1c1b18;
+  border-bottom-color: rgba(0, 0, 0, 0.12);
+}
+
+.reading-mode .resume-role h3 {
+  color: #1c1b18;
+}
+
+.reading-mode .resume-role ul {
+  color: #3a3835;
+}
+
+.reading-mode .resume-skills__group ul {
+  color: #4a4845;
+}
+
+.reading-mode .resume-cert {
+  background: rgba(46, 111, 163, 0.06);
+  border-color: rgba(46, 111, 163, 0.2);
+}
+
+.reading-mode .resume-cert strong {
+  color: #1c1b18;
+}
+
+.reading-mode .resume-cert span {
+  color: #6a6865;
+}
+
 /* ─── RESPONSIVE ─────────────────────────────────── */
 
-@media (max-width: 720px) {
+/* ── 480px: Large phones ── */
+@media (min-width: 480px) {
+  .card {
+    padding: 1.75rem;
+  }
+
+  .surface {
+    padding: 2rem;
+  }
+
+  .metric {
+    padding: 1.75rem 1.5rem;
+  }
+}
+
+/* ── 768px: Tablet / Small desktop ── */
+@media (min-width: 768px) {
+  main {
+    padding: 0 0 6rem;
+  }
+
   .nav {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0.75rem 0;
-  }
-
-  .nav__brand {
-    width: 100%;
+    flex-direction: row;
     align-items: center;
+    gap: 1rem;
+    flex-wrap: nowrap;
+    padding: 1rem 0;
   }
 
-  .nav__links {
-    width: 100%;
-    justify-content: flex-start;
-    gap: 1rem;
+  .nav__bar {
+    flex: 1 1 180px;
+  }
+
+  .nav__hamburger {
+    display: none;
+  }
+
+  .nav__links,
+  .nav--open .nav__links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 1.75rem;
+    flex: 2 1 auto;
+    padding: 0;
+    width: auto;
+  }
+
+  .nav__links a {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
   }
 
   .hero {
-    padding-top: 2.5rem;
+    padding: 4rem 0 2.5rem;
   }
 
-  .btn-row {
+  .hero__intro {
+    font-size: 1.05rem;
+  }
+
+  .btn {
+    padding: 0.85rem 2rem;
+  }
+
+  .section {
+    margin-top: 5rem;
+  }
+
+  .section__title {
+    margin-bottom: 1.5rem;
+  }
+
+  .section--compact {
+    margin-top: 2.5rem;
+  }
+
+  .card {
+    padding: 2rem;
+  }
+
+  .surface {
+    padding: 2.5rem;
+  }
+
+  .contact-form {
+    padding: 1.75rem;
+  }
+
+  .metric {
+    padding: 2rem 1.75rem;
+  }
+
+  .metric strong {
+    font-size: 3.25rem;
+  }
+
+  footer {
+    margin: 4rem auto 0;
+    padding: 2rem 0 3rem;
+    font-size: 0.8rem;
+  }
+
+  footer .footer-links {
+    gap: 1.5rem;
+  }
+
+  .timeline {
+    padding-left: 2rem;
+  }
+
+  .brand-chat {
+    right: 2rem;
+    bottom: 2rem;
+  }
+
+  .brand-chat__panel {
+    width: min(360px, 90vw);
+  }
+
+  .hero {
+    padding: 5rem 0 2.5rem;
+  }
+
+  .post-content h2 {
+    font-size: 1.75rem;
+  }
+}
+
+/* ── 1024px: Desktop ── */
+@media (min-width: 1024px) {
+  .hero h1 {
+    font-size: clamp(3rem, 5vw, 5.5rem);
+  }
+
+  .contact-grid {
+    gap: 2.5rem;
+  }
+}
+
+/* ─── PRINT (for resume) ─────────────────────────── */
+
+@media print {
+  .nav,
+  .brand-chat,
+  .reading-toggle,
+  .post-controls,
+  .post-footer,
+  footer {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: #000;
+    font-size: 11pt;
+  }
+
+  main {
     width: 100%;
+    padding: 0;
   }
 
-  .btn-row .btn {
-    flex: 1 1 auto;
-    text-align: center;
+  .surface {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    background: transparent;
+  }
+
+  .resume-section h2 {
+    color: #000;
+    border-bottom-color: #ccc;
+  }
+
+  .resume-role h3 {
+    color: #000;
+  }
+
+  .resume-meta {
+    color: #333 !important;
+  }
+
+  .resume-role ul,
+  .resume-skills__group ul {
+    color: #333;
+  }
+
+  .resume-cert {
+    border-color: #ccc;
+    background: #f5f5f5;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
   }
 }

@@ -51,7 +51,7 @@ class BrandChat {
     this.container = document.createElement("div");
     this.container.className = "brand-chat";
     this.container.innerHTML = `
-      <div class="brand-chat__panel" aria-live="polite">
+      <div class="brand-chat__panel" id="brand-chat" aria-live="polite">
         <div class="brand-chat__header">
           <strong>Ask Ryan's AI concierge</strong>
           <p class="brand-chat__subtitle">Get quick facts about his work and start the conversation.</p>
@@ -165,6 +165,7 @@ window.addEventListener("DOMContentLoaded", () => {
   new BrandChat();
   initContactForm();
   markActiveNav();
+  initReadingToggle();
 });
 
 function markActiveNav() {
@@ -175,6 +176,18 @@ function markActiveNav() {
     if (path.endsWith(page) || (page === "journal.html" && path.includes("/journal/"))) {
       link.classList.add("is-active");
     }
+  });
+}
+
+function initReadingToggle() {
+  document.querySelectorAll(".reading-toggle").forEach((btn) => {
+    function syncLabel() {
+      btn.textContent = document.documentElement.classList.contains("reading-mode")
+        ? "Exit reading mode"
+        : "Reading mode";
+    }
+    syncLabel();
+    btn.addEventListener("click", syncLabel);
   });
 }
 
