@@ -2,6 +2,8 @@
 rag/*.json
 private/
 node_modules/
+.firecrawl/
+docs/AI_ADLC_LinkedIn_Article.docx
 
 # PDF assets and large binaries (keep original copies locally)
 Ryan_Brown_Sep_25.pdf

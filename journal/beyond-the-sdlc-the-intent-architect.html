@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beyond the SDLC: The Intent Architect | 4everinbeta Journal</title>
+    <meta name="description" content="As agents take on more software delivery work, engineers may need to define intent, authority, and evidence as carefully as they define code." />
+    <meta property="og:title" content="Beyond the SDLC: The Intent Architect | 4everinbeta Journal" />
+    <meta property="og:description" content="As agents take on more software delivery work, engineers may need to define intent, authority, and evidence as carefully as they define code." />
+    <meta property="og:image" content="https://4everinbeta.me/logo-only-white-bluebg.png" />
+    <meta property="og:url" content="https://4everinbeta.me/journal/beyond-the-sdlc-the-intent-architect.html" />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://4everinbeta.me/logo-only-white-bluebg.png" />
+    <link rel="icon" type="image/png" href="../logo-only-white-bluebg.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script>if(localStorage.getItem('darkMode')==='true')document.documentElement.classList.add('dark-mode');</script>
+    <script defer src="../chat.js"></script>
+  </head>
+  <body class="page page--post">
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    <main id="main-content">
+      <header class="nav">
+        <div class="nav__bar">
+          <a class="nav__brand" href="../index.html" aria-label="Ryan Brown, 4everinbeta">
+            <img src="../logo-name-horizontal-white-transbg.png" alt="4everinbeta logo" class="nav__logo" />
+            <span class="nav__name">Ryan Brown</span>
+          </a>
+          <button class="nav__hamburger" aria-label="Open navigation" onclick="var n=this.closest('.nav');n.classList.toggle('nav--open');this.setAttribute('aria-label',n.classList.contains('nav--open')?'Close navigation':'Open navigation')">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+        <div class="nav__links">
+          <a href="../index.html#impact">Impact</a>
+          <a href="../index.html#career">Career</a>
+          <a href="../index.html#focus">Focus Areas</a>
+          <a href="../index.html#contact">Connect</a>
+          <a href="../4everinbeta.html">Why 4everinbeta</a>
+          <a href="../journal.html">Journal</a>
+          <a href="../resume.html">Resume</a>
+        </div>
+      </header>
+      <section class="hero">
+        <p class="hero__eyebrow">Oct 29, 2026</p>
+        <h1>Beyond the SDLC: The Intent Architect</h1>
+        <p class="hero__intro">When agents write code, engineers still have to define the work and decide what evidence earns a release.</p>
+      </section>
+      <article class="surface post">
+        <div class="post-controls">
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('dark-mode');localStorage.setItem('darkMode',document.documentElement.classList.contains('dark-mode'))" aria-label="Activate dark mode">Dark mode</button>
+        </div>
+        <div class="post-content">
+<p>A customer asks for a way to export their account history. An agent can draft the API and screen while the product team is still deciding which records the customer is allowed to see.</p>
+
+<p>The product team still has to define access rules, privacy limits, acceptable delays, and the evidence needed for release. If agents produce more changes in less time, engineers will face more of those decisions and more results to review.</p>
+
+<p><a href="https://claude.com/resources/articles/the-ai-native-sdlc-playbook" target="_blank" rel="noopener">Anthropic's AI-native SDLC playbook</a> describes how planning, review, testing, and deployment can become the slowest stages as coding speeds up. Its six-stage model keeps people responsible for decisions that require judgment. I want teams to define which routine decisions they can delegate and what evidence an agent must leave behind.</p>
+
+<h2>From assistance to delegated work</h2>
+
+<p>With a copilot, the developer directs each step. A delivery agent can draft a plan, change files, run checks, and present a release candidate. That transfer of work forces the engineer to make certain decisions before the agent starts.</p>
+
+<p>For the account-history feature, an agent could choose a pagination library or draft test fixtures within approved constraints. Someone at the company must decide whether support staff may download a customer's records, whether deleted records belong in an export, and which failures should halt the release.</p>
+
+<p>I call this proposed arrangement an AI-Augmented Development Lifecycle, or AI-ADLC. People define the purpose and limits of the work. Agents carry it out within those limits, independent checks challenge the result, and people take the decisions with material consequences. I began tracing this shift in <a href="from-autocomplete-to-orchestrator.html">From Autocomplete to Orchestrator</a>.</p>
+
+<h2>Make intent an engineering artifact</h2>
+
+<p>A business partner may ask for "customer history" while assuming that only account owners can request it and that support staff need an audit trail. Another stakeholder may expect deleted records to stay deleted. An engineer finds these differences by talking with the people involved. AI can suggest questions, but the people responsible for the service have to agree on the answers.</p>
+
+<p>I would record those answers in an <em>intent contract</em>. For the export feature, it would name the outcome, define who can request an export, set a processing limit, specify a rollback path, and list the tests and evidence required for acceptance. It would also name who can approve an exception. The team should revise the contract as its understanding changes.</p>
+
+<p>The contract gives builders and reviewers the same account of what the feature must do. A validator can compare the result with the agreed purpose as well as the test suite. Without that record, a passing build may conceal a wrong assumption about the customer.</p>
+
+<h2>Separate the roles that create and judge a change</h2>
+
+<p>The builder agent can run its own tests and write a persuasive summary. I would still ask a separate validator to inspect the change against the intent contract. A policy or release authority should check the evidence and the permitted scope. After deployment, an observer should watch the behavior that the contract says matters.</p>
+
+<p>Teams can automate some of these checks. They still need a record of who or what made each decision, and they should keep an agent from enlarging its own authority because its last change passed a test suite.</p>
+
+<p>The <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework</a> gives teams voluntary guidance for considering trustworthiness throughout the design, development, use, and evaluation of AI systems. I would use that risk perspective when setting agent boundaries. NIST does not prescribe the delivery model I propose here.</p>
+
+<h2>Give autonomy a boundary</h2>
+
+<p>I would start with three decision bands. Green covers clear, low-risk work inside approved architecture and policy, with required checks passed; agents may proceed and record what they did. Yellow covers ambiguity, missing evidence, or an exception; agents recommend and people decide. Red covers policy changes, material risk acceptance, critical architecture changes, or expanded agent authority; people make those decisions.</p>
+
+<p>The consequence and reversibility of an action determine its band. A small change inside a tested component may qualify for more delegated authority than a change to customer data access. When engineers approve the same exception several times, they can turn that decision into a reviewed policy and give the next agent a clearer boundary.</p>
+
+<h2>The work of an Intent Architect</h2>
+
+<p>I have started calling the engineer who does this work an <em>Intent Architect</em>. The role begins with the business conversation: what outcome do people need, which assumptions have they left unstated, and where does the agent's authority end?</p>
+
+<p>That engineer translates the answers into a contract agents can use, sets architectural limits, and examines the evidence from each change. Technical depth matters here. Someone must recognize a faulty design, a misleading test, or a shortcut that creates coupling the team will regret.</p>
+
+<p>Teams can begin with a single delegated task and add autonomy as they learn which controls hold up. Engineers will discover gaps in the contract, the checks, and the decision bands. They should bring those findings back to the people who own the outcome before widening the agent's scope.</p>
+
+<p>Software engineers will still write code. Their harder responsibility may be to understand what the organization means, set the limits within which agents can act, and decide when the evidence is good enough to ship.</p>
+        </div>
+        <div class="post-footer">
+          <a class="text-link text-link--back" href="../journal.html">Back to all entries</a>
+          <button class="reading-toggle" onclick="document.documentElement.classList.toggle('dark-mode');localStorage.setItem('darkMode',document.documentElement.classList.contains('dark-mode'))" aria-label="Activate dark mode">Dark mode</button>
+        </div>
+      </article>
+    </main>
+    <footer>
+      <div class="footer-links">
+        <span>Castle Pines, CO</span>
+        <span>·</span>
+        <a href="../4everinbeta.html">Origin story</a>
+        <span>·</span>
+        <a href="../journal.html">Journal</a>
+        <span>·</span>
+        <a href="mailto:ryankbrown@gmail.com">ryankbrown@gmail.com</a>
+      </div>
+    </footer>
+  </body>
+</html>
